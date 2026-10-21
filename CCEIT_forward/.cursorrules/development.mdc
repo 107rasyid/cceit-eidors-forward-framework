@@ -1,0 +1,189 @@
+# CC-EIT EIDORS Forward Workflow — Cursor Rules
+
+## Project Context
+
+Reproducible MATLAB/EIDORS forward-modeling workflow for 16-electrode
+voltage-driven Capacitively Coupled EIT (CC-EIT). This codebase supports
+a conference paper:
+
+  "A Reproducible EIDORS Workflow for Voltage-Driven Capacitively
+   Coupled Electrical Impedance Tomography (CC-EIT)"
+
+The contribution is FORWARD MODELING + NUMERICAL VERIFICATION + REPRODUCIBILITY.
+It is NOT a reconstruction/inverse-problem paper.
+
+## SCOPE — HARD BOUNDARIES
+
+### IN SCOPE (implement / maintain)
+- 2D circular forward model, 16 electrodes, EIDORS CEM (mk_common_model('c2C', 16))
+- Voltage-driven excitation: tx at V_tx, rx at 0 V (virtual ground), others floating
+- Receiver scan: tx fixed, rx iterated over all remaining electrodes
+- Frequency-dependent complex contact impedance:
+    z_l(ω) = 1 / (G_l + j·ω·C_l)
+  applied via fmdl.electrode(e).z_contact
+- Complex tissue admittivity: γ(ω) = σ + j·ω·ε0·εr
+- Numerical verification: current conservation (KCL global + floating),
+  mesh refinement study (≥3 levels), comparison vs explicitly-meshed
+  dielectric-layer reference model
+- Plots: receiver-current profile (mag + phase), spatial voltage map,
+  current-density quiver, mesh convergence curve
+- Reproducibility: single entry point, all parameters in one file,
+  CSV export, documented versions
+
+### OUT OF SCOPE — DO NOT IMPLEMENT
+- Inverse problem, image reconstruction (NOSER, Gauss-Newton, Tikhonov)
+- Time-difference or frequency-difference imaging
+- Multi-frequency joint reconstruction
+- 3D models
+- Experimental validation, hardware calibration
+- TIA / demodulator / noise / parasitic capacitance simulation
+- Tissue phantom 2 (lungs + heart) unless explicitly requested
+- Comparison with commercial CC-EIT systems
+- Machine learning anything
+
+If a feature in the OUT list is required for IN to run, implement it
+minimally, mark it with % [SCAFFOLDING] and explain why in a comment.
+
+If you think an OUT feature would improve the paper, do NOT implement it.
+Add it to the "Proposed Extensions" section of PROGRESS.md instead.
+
+## CODING STANDARDS
+
+### MATLAB/Octave compatibility
+- Must run on BOTH MATLAB R2020a+ and Octave 7+ (user currently uses Octave)
+- Prefer eye() over speye() (Octave+EIDORS sometimes ignores sparse patterns)
+- Always write 1i for imaginary unit (never i or j — collision with loop vars)
+- No eval(), no global variables, no scripts-in-functions
+- Every function has a help block: Purpose / Inputs / Outputs / Manuscript ref
+
+### Naming
+- Physical units in variable names: radius_m, freq_Hz, sigma_bg
+- Struct-based parameter passing (never >5 positional args)
+- Error messages prefix with function name:
+    error('cceit_receiver_scan: non-finite I_rx at rx=%d', rx)
+- Warnings must be actionable (state what user should check)
+
+### Manuscript alignment
+Every function MUST cite the manuscript section it implements:
+    % Implements: Section II.C "Single-Transmitter Drive and Receiver Scan"
+    % Equation: (3)  U_t = V_tx,  U_r = 0,  others floating
+This is essential for the reproducibility claim.
+
+## CRITICAL KNOWN ISSUES (must NOT reappear)
+
+1. omega = 2*pi*freq_Hz        (NOT 2+pi*freq_Hz)
+2. gamma = sigma + 1i*omega*eps0*epsr_bg   (NOT sigma + 11+omega*...)
+3. Ceff = 1e-7 * ones(nElec,1)  (NOT 1e-7 \* ones(...))
+4. Variable name stim, consistently (NOT stm or stim mixed)
+5. No orphan 'end' after loops
+6. Prefer mk_common_model('c2C', nElec); fallback 'c2C2' ONLY with warning
+
+## OCTAVE-SPECIFIC QUIRKS (learned the hard way)
+
+- `run('.../startup.m')` fails with relative path. Use addpath(genpath(eidors_path))
+- `meas_pattern = speye(nElec)` may be IGNORED by Octave+EIDORS.
+  data.meas may come back as nContactNodes (e.g., 208) instead of nElec (16).
+  → Always check size and aggregate via fmdl.electrode(e).nodes if needed
+- `data.elec_curr` may be nElec × nStim (e.g., 16×16) instead of nElec × 1.
+  → Use column 1 for single-stimulation solves
+- `fwd_solve.get_elec_curr` requires EIDORS ≥ 3.9. If missing, warn clearly
+- `ng_mk_cyl_models` (reference layer) requires separate NGNetgen binary.
+  Wrap in try/catch. Never let reference failure break the main workflow.
+- Complex z_contact: some EIDORS+Octave combos drop imaginary part silently.
+  → Add a sanity check: assert(any(imag(zc) ~= 0)) and warn if dropped
+
+## FILE STRUCTURE (must remain this way)
+
+  cceit_workflow/
+  ├── .cursorrules                    ← this file
+  ├── PROGRESS.md                     ← what's done, what's next, proposed extensions
+  ├── README.md
+  ├── run_cceit.m                     ← single entry point
+  ├── cceit_params.m                  ← ALL parameters, single source of truth
+  ├── cceit_build_model.m             ← EIDORS geometry
+  ├── cceit_receiver_scan.m           ← CORE (voltage-driven scan)
+  ├── cceit_verify.m                  ← current conservation
+  ├── cceit_reference_layer.m         ← explicit dielectric layer
+  ├── cceit_sensitivity.m             ← freq/C/G/tissue sweeps
+  ├── cceit_plot.m                    ← all figures
+  └── tests/
+      ├── test_current_conservation.m
+      ├── test_mesh_convergence.m
+      └── test_reference_agreement.m
+
+Do not create new files without updating this list and PROGRESS.md.
+
+## PARAMETER RULES
+
+All physical and numerical parameters live in cceit_params.m.
+No hardcoded magic numbers in other files. If a value is needed
+in two places, it belongs in P.
+
+cceit_params.m must expose:
+  nElec, radius_m, insulator_thickness_m
+  Vtx, tx
+  freq_Hz (vector, ≥3 values spanning 100 kHz – 1 MHz)
+  sigma_bg, epsr_bg, eps0
+  sig_ins, er_ins
+  Ceff_F_per_m (COMPUTED from eps0*er_ins/t_ins by default)
+  Gcontact_S_per_m (default 0)
+  tol_current_conservation (default 1e-10)
+  mesh_refine_levels (default 2)
+  outdir
+
+Ceff_F_per_m default computation MUST have a comment stating:
+"This is a first-principles estimate, not a calibrated value."
+
+## VERIFICATION REQUIREMENTS
+
+Every run of run_cceit.m must report:
+1. max |sum(I_elec)| per solve  → must be < tol_current_conservation
+2. max |I_floating| per solve   → must be < tol_current_conservation
+3. Mesh convergence: rel-change in I_rx between consecutive levels
+4. Reference agreement: relative error CEM vs explicit-layer (or "skipped" with reason)
+
+Never silently swallow a failed check. Print the numeric value and a
+clear pass/fail message.
+
+## DEVELOPMENT WORKFLOW
+
+Before writing code:
+1. State which manuscript section the file implements
+2. Check PROGRESS.md for scope decisions already made
+3. Ask: is this IN scope? If unclear, do NOT implement — add to PROGRESS.md
+
+When debugging:
+- Never modify code to "make error go away" without understanding why
+- If error is Octave-specific, document it in PROGRESS.md under "Octave quirks"
+- If a fix requires OUT-of-scope work, stop and ask
+
+After each working milestone:
+- Update PROGRESS.md with: what works, what doesn't, next step
+- Run at least one test in tests/
+
+## STYLE GUIDE FOR COMMENTS
+
+- Explain WHY, not WHAT. Bad: "% increment i". Good: "% Skip tx electrode"
+- No commented-out code. Delete it or move to PROGRESS.md
+- No TODO/FIXME without a corresponding entry in PROGRESS.md
+- Section headers use %% in scripts, but functions should be self-documenting
+
+## CONFERENCE PAPER CONTEXT
+
+The paper is 5–6 pages, IEEE format. The code supports:
+- Section II (Proposed Workflow): cceit_build_model, cceit_params
+- Section III (EIDORS Implementation): cceit_receiver_scan
+- Section IV (Results):
+  - IV.A Current conservation + mesh refinement → cceit_verify
+  - IV.B Reference comparison → cceit_reference_layer
+  - IV.C Receiver profile + spatial fields → cceit_plot
+  - IV.D Sensitivity study → cceit_sensitivity
+
+If the user asks to implement something not in this mapping,
+ask which section it supports. If none, it's likely OUT of scope.
+
+## WHEN IN DOUBT
+
+Ask before implementing. This project has strict scope. The cost of
+implementing an out-of-scope feature is higher than the cost of asking
+one clarifying question.
