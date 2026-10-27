@@ -1,4 +1,4 @@
-function R = cceit_receiver_scan(P, fmdl, freq_Hz, Y_elem)
+function R = cceit_receiver_scan(P, fmdl, freq_Hz, Y_elem, z_contact_override)
 % CCEIT_RECEIVER_SCAN  Voltage-driven, single-transmitter, receiver scan.
 %
 %   Untuk tiap rx != tx:
@@ -7,6 +7,7 @@ function R = cceit_receiver_scan(P, fmdl, freq_Hz, Y_elem)
 %       lainnya floating (current = 0)
 %
 %   Input opsional Y_elem = admittivity per elemen [nElem x 1].
+%   Input opsional z_contact_override mempertahankan interface reference layer.
 %   Default: background homogen.
 %
 %   Output R:
@@ -24,7 +25,17 @@ end
 
 % --- Set z_contact kompleks untuk frekuensi ini ---
 omega = 2*pi*freq_Hz;
-zc = 1 ./ (P.Gcontact_S_per_m + 1i * omega * P.Ceff_F_per_m) * ones(P.nElec,1);
+if nargin >= 5 && ~isempty(z_contact_override)
+    if isscalar(z_contact_override)
+        zc = z_contact_override * ones(P.nElec, 1);
+    elseif numel(z_contact_override) == P.nElec
+        zc = z_contact_override(:);
+    else
+        error('cceit_receiver_scan: z_contact_override must be scalar or nElec values');
+    end
+else
+    zc = 1 ./ (P.Gcontact_S_per_m + 1i * omega * P.Ceff_F_per_m) * ones(P.nElec,1);
+end
 for e = 1:P.nElec
     fmdl.electrode(e).z_contact = zc(e);
 end
@@ -50,6 +61,22 @@ R.V_nodes = zeros(nNd, nRx);
 R.zc      = zc;
 
 for k = 1:nRx
+    rx = rx_list(k);  % Current receiver corresponding to output column k.
+    if isfield(fmdl, 'stimulation') && ~isempty(fmdl.stimulation)
+        stim = fmdl.stimulation(1);
+    else
+        % Netgen geometry models may omit the stimulation protocol entirely.
+        stim = struct('stim_pattern', zeros(nEl, 1), ...
+                      'volt_pattern', zeros(nEl, 1), ...
+                      'meas_pattern', eye(nEl));
+    end
+    stim.stim_pattern = zeros(nEl, 1);
+    stim.stim_pattern([P.tx, rx]) = NaN;  % Prescribed-voltage terminals.
+    stim.volt_pattern = zeros(nEl, 1);
+    stim.volt_pattern(P.tx) = P.Vtx;
+    stim.volt_pattern(rx) = 0;
+    fmdl.stimulation = stim;
+    img.fwd_model = fmdl;
     data = fwd_solve(img);
 
     % ===== EKSTRAKSI ROBUST (Octave + EIDORS) =====

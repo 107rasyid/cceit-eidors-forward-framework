@@ -71,11 +71,8 @@ try
     Y_ref(ring) = Yins;
 
     % Contact metal-elektroda kecil (bukan interface)
-    for e = 1:P.nElec
-        fmdl_ref.electrode(e).z_contact = 1e-4;
-    end
-
-    R_ref = cceit_receiver_scan(P, fmdl_ref, freq, Y_ref);
+    z_contact_ref = 1e-4; % Explicit dielectric ring supplies the interface layer.
+    R_ref = cceit_receiver_scan(P, fmdl_ref, freq, Y_ref, z_contact_ref);
     rel_err_ref = norm(R_base.I_rx - R_ref.I_rx) / norm(R_ref.I_rx);
 
     fprintf('    Elemen: %d (%d di ring insulator)\n', numel(Y_ref), sum(ring));
@@ -89,7 +86,16 @@ end
 fprintf('\n[5] Plots & export\n');
 cceit_plot(P, fmdl, R_base, nElems, err_rel);
 
-fid = fopen(fullfile(P.outdir,'cceit_receiver_current.csv'),'w');
+csv_path = fullfile(P.outdir, 'cceit_receiver_current.csv');
+fid = fopen(csv_path, 'w');
+if fid < 0
+    % An open/locked output file should not prevent the figures from being saved.
+    csv_path = fullfile(tempdir, 'cceit_receiver_current.csv');
+    fid = fopen(csv_path, 'w');
+end
+if fid < 0
+    error('run_cceit: cannot create receiver CSV in the output folder or temp folder; check write permissions and whether the file is locked');
+end
 fprintf(fid,'rx,Re_Irx,Im_Irx,abs_Irx,phase_deg\n');
 for k = 1:numel(R_base.rx_list)
     fprintf(fid,'%d,%.12e,%.12e,%.12e,%.6f\n', ...
@@ -98,4 +104,5 @@ for k = 1:numel(R_base.rx_list)
 end
 fclose(fid);
 
-fprintf('\nSelesai. Hasil di: %s\n', P.outdir);
+fprintf('\nCSV tersimpan: %s\n', csv_path);
+fprintf('Selesai. Hasil di: %s\n', P.outdir);
