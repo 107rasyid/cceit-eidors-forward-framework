@@ -24,7 +24,7 @@ P.epsr  = 78;
 P.d       = 0.003;   % [m]
 P.sigma_d = 1e-9;    % [S/m]
 P.epsr_d  = 9;
-P.z_el    = 0.01;    % kontak elektroda model B [Ohm.m^2]  PLACEHOLDER
+P.z_el    = 0.01;    % kontak elektroda model B [Ohm.m]  PLACEHOLDER
 
 P.eps0 = 8.8541878128e-12;
 end
