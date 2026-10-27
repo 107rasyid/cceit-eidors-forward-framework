@@ -1,0 +1,135 @@
+# Created by Octave 11.3.0, Tue Oct 27 10:37:53 2026 UTC
+# name: P0
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 16
+# name: netgen_bin
+# type: sq_string
+# elements: 1
+# length: 13
+C:\Netgen\bin
+
+
+# name: nElec
+# type: scalar
+16
+
+
+# name: R
+# type: scalar
+0.089999999999999997
+
+
+# name: w_el
+# type: scalar
+0.025999999999999999
+
+
+# name: h_int
+# type: scalar
+0.0030000000000000001
+
+
+# name: h_el
+# type: scalar
+0.0015
+
+
+# name: width_mode
+# type: sq_string
+# elements: 1
+# length: 6
+meters
+
+
+# name: Vtx
+# type: scalar
+1
+
+
+# name: f
+# type: scalar
+500000
+
+
+# name: sigma
+# type: scalar
+0.20000000000000001
+
+
+# name: epsr
+# type: scalar
+78
+
+
+# name: d
+# type: scalar
+0.0030000000000000001
+
+
+# name: sigma_d
+# type: scalar
+1.0000000000000001e-09
+
+
+# name: epsr_d
+# type: scalar
+9
+
+
+# name: z_el
+# type: scalar
+0.01
+
+
+# name: eps0
+# type: scalar
+8.8541878128000006e-12
+
+
+
+
+# name: iA
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 3
+# name: nNodes
+# type: scalar
+3199
+
+
+# name: nElems
+# type: scalar
+6171
+
+
+# name: rmax
+# type: scalar
+0.089999999999999997
+
+
+
+
+# name: meta
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: version
+# type: sq_string
+# elements: 1
+# length: 6
+11.3.0
+
+
+# name: date
+# type: sq_string
+# elements: 1
+# length: 20
+27-Oct-2026 10:37:53
+
+
+
+
