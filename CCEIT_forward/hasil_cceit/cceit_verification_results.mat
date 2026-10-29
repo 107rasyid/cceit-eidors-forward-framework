@@ -1,0 +1,322 @@
+# Created by Octave 11.3.0, Thu Oct 29 16:12:02 2026 UTC
+# name: P
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 21
+# name: netgen_bin
+# type: sq_string
+# elements: 1
+# length: 13
+C:\Netgen\bin
+
+
+# name: nElec
+# type: scalar
+16
+
+
+# name: R
+# type: scalar
+0.052999999999999999
+
+
+# name: w_el
+# type: scalar
+0.017999999999999999
+
+
+# name: width_mode
+# type: sq_string
+# elements: 1
+# length: 6
+meters
+
+
+# name: depth
+# type: scalar
+1
+
+
+# name: h_int
+# type: scalar
+0.0025000000000000001
+
+
+# name: h_el
+# type: scalar
+0.001
+
+
+# name: h_ring_B
+# type: scalar
+0.00050000000000000001
+
+
+# name: h_ring_B_coarse
+# type: scalar
+0.001
+
+
+# name: n_reciprocity_pairs
+# type: scalar
+30
+
+
+# name: Vtx
+# type: scalar
+1
+
+
+# name: f
+# type: scalar
+500000
+
+
+# name: sigma
+# type: scalar
+0.025000000000000001
+
+
+# name: epsr
+# type: scalar
+80
+
+
+# name: d
+# type: scalar
+0.002
+
+
+# name: sigma_d
+# type: scalar
+0
+
+
+# name: epsr_d
+# type: scalar
+3
+
+
+# name: z_el
+# type: scalar
+0.01
+
+
+# name: eps0
+# type: scalar
+8.8541878128000006e-12
+
+
+# name: outdir
+# type: sq_string
+# elements: 1
+# length: 69
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\hasil_cceit
+
+
+
+
+# name: check_A
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 6
+# name: nElems
+# type: scalar
+2870
+
+
+# name: max_dcc
+# type: scalar
+1.1006360443960202e-12
+
+
+# name: max_dfloat
+# type: scalar
+5.4719341951043982e-16
+
+
+# name: max_dU
+# type: scalar
+0
+
+
+# name: max_reciprocity_error
+# type: scalar
+6.6403943333247075e-13
+
+
+# name: reciprocity_errors
+# type: matrix
+# rows: 30
+# columns: 1
+ 4.5734404890711349e-14
+ 1.8798246049636353e-13
+ 1.3609592952021223e-13
+ 8.9606480566659462e-14
+ 2.1818103420572729e-13
+ 1.9659240266027333e-13
+ 8.0429681796426162e-14
+ 1.5628272219573842e-13
+ 3.8845593824221347e-14
+ 7.773198726453889e-14
+ 3.2028604381481542e-13
+ 3.2780780042293111e-13
+ 3.8163542511226206e-13
+ 1.9653237620092497e-13
+ 2.2225601342038406e-13
+ 2.1460904891052189e-13
+ 3.2608978946046931e-14
+ 3.8664524903084846e-13
+ 3.6625754636743613e-13
+ 5.3073067905597602e-13
+ 1.5473697285109271e-13
+ 2.782525972391658e-13
+ 6.0303922871307403e-14
+ 1.804581211824819e-13
+ 6.6403943333247075e-13
+ 2.1496278783267092e-13
+ 4.7549713726862158e-13
+ 4.0655178516360925e-14
+ 1.883246934151333e-13
+ 5.9368448390038898e-13
+
+
+
+
+# name: check_B
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 8
+# name: nElems
+# type: scalar
+80062
+
+
+# name: nRing
+# type: scalar
+5600
+
+
+# name: h_ring
+# type: scalar
+0.00050000000000000001
+
+
+# name: max_dcc
+# type: scalar
+1.9103568845439754e-11
+
+
+# name: max_dfloat
+# type: scalar
+1.6159004762735965e-12
+
+
+# name: max_dU
+# type: scalar
+0
+
+
+# name: max_reciprocity_error
+# type: scalar
+8.6163756188432002e-12
+
+
+# name: reciprocity_errors
+# type: matrix
+# rows: 30
+# columns: 1
+ 3.2086840535887533e-12
+ 5.3880182812234037e-13
+ 4.848187712235417e-12
+ 2.6918999141992045e-12
+ 3.2280830362844765e-12
+ 1.6210812785956656e-12
+ 2.6945806057831294e-12
+ 1.607138633459424e-12
+ 1.6146725608975705e-12
+ 2.1538494154086294e-12
+ 4.3054850736139624e-12
+ 6.7387768294984743e-14
+ 7.6494091943999717e-14
+ 2.6898562279481523e-12
+ 1.6377593745295789e-12
+ 1.0932184930434836e-12
+ 1.6233062241253699e-12
+ 2.15605992105364e-12
+ 8.6163756188432002e-12
+ 5.5136007007993197e-13
+ 2.6929547753686694e-12
+ 9.3531121804498804e-14
+ 4.3078914957123063e-12
+ 2.6900351322227571e-12
+ 4.843755928345059e-12
+ 1.6373837649642641e-12
+ 4.8518193188201302e-12
+ 1.6153784011371361e-12
+ 1.0761271618376941e-12
+ 1.6062787901448652e-12
+
+
+
+
+# name: reciprocity_pairs
+# type: matrix
+# rows: 30
+# columns: 2
+ 1 2
+ 1 6
+ 1 10
+ 1 14
+ 2 4
+ 2 9
+ 2 13
+ 3 4
+ 3 8
+ 3 12
+ 3 16
+ 4 8
+ 4 12
+ 4 16
+ 5 9
+ 5 14
+ 6 8
+ 6 12
+ 6 16
+ 7 11
+ 7 15
+ 8 11
+ 8 15
+ 9 12
+ 9 16
+ 10 15
+ 11 14
+ 12 14
+ 13 15
+ 15 16
+
+
+# name: meta
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: version
+# type: sq_string
+# elements: 1
+# length: 6
+11.3.0
+
+
+# name: date
+# type: sq_string
+# elements: 1
+# length: 20
+29-Oct-2026 16:12:02
+
+
+
+

@@ -3,7 +3,8 @@
 ## Project Context
 
 Reproducible MATLAB/EIDORS forward-modeling workflow for 16-electrode
-voltage-driven Capacitively Coupled EIT (CC-EIT). This codebase supports
+voltage-driven Capacitively Coupled EIT (CC-EIT). The active study compares
+a lumped-interface Model A against an explicit-layer Model B and supports
 a conference paper:
 
   "A Reproducible EIDORS Workflow for Voltage-Driven Capacitively
@@ -15,20 +16,15 @@ It is NOT a reconstruction/inverse-problem paper.
 ## SCOPE — HARD BOUNDARIES
 
 ### IN SCOPE (implement / maintain)
-- 2D circular forward model, 16 electrodes, EIDORS CEM (mk_common_model('c2C', 16))
-- Voltage-driven excitation: tx at V_tx, rx at 0 V (virtual ground), others floating
-- Receiver scan: tx fixed, rx iterated over all remaining electrodes
-- Frequency-dependent complex contact impedance:
-    z_l(ω) = 1 / (G_l + j·ω·C_l)
-  applied via fmdl.electrode(e).z_contact
-- Complex tissue admittivity: γ(ω) = σ + j·ω·ε0·εr
-- Numerical verification: current conservation (KCL global + floating),
-  mesh refinement study (≥3 levels), comparison vs explicitly-meshed
-  dielectric-layer reference model
-- Plots: receiver-current profile (mag + phase), spatial voltage map,
-  current-density quiver, mesh convergence curve
-- Reproducibility: single entry point, all parameters in one file,
-  CSV export, documented versions
+- 2D circular 16-electrode forward models built with Netgen/EIDORS CEM
+- Model A: dielectric layer represented by lumped complex contact impedance
+- Model B: explicit conformal dielectric ring with independent ring mesh size
+- Voltage-driven scans over all 120 unordered electrode pairs; others float
+- Complex tissue and dielectric admittivity: γ(ω) = σ + j·ω·ε0·εr
+- Numerical checks: current conservation, floating currents, prescribed voltages,
+  mesh sensitivity, and Model A/B comparison
+- Parameter sweeps for Model A and focused Model B resolution checks
+- Reproducible scripts with parameters centralized in cceit_params.m
 
 ### OUT OF SCOPE — DO NOT IMPLEMENT
 - Inverse problem, image reconstruction (NOSER, Gauss-Newton, Tikhonov)
@@ -76,7 +72,7 @@ This is essential for the reproducibility claim.
 3. Ceff = 1e-7 * ones(nElec,1)  (NOT 1e-7 \* ones(...))
 4. Variable name stim, consistently (NOT stm or stim mixed)
 5. No orphan 'end' after loops
-6. Prefer mk_common_model('c2C', nElec); fallback 'c2C2' ONLY with warning
+6. Keep the Netgen-built Model A/B geometry consistent when comparing results
 
 ## OCTAVE-SPECIFIC QUIRKS (learned the hard way)
 
@@ -92,24 +88,22 @@ This is essential for the reproducibility claim.
 - Complex z_contact: some EIDORS+Octave combos drop imaginary part silently.
   → Add a sanity check: assert(any(imag(zc) ~= 0)) and warn if dropped
 
-## FILE STRUCTURE (must remain this way)
+## ACTIVE FILE STRUCTURE
 
-  cceit_workflow/
-  ├── .cursorrules                    ← this file
-  ├── PROGRESS.md                     ← what's done, what's next, proposed extensions
-  ├── README.md
-  ├── run_cceit.m                     ← single entry point
-  ├── cceit_params.m                  ← ALL parameters, single source of truth
-  ├── cceit_build_model.m             ← EIDORS geometry
-  ├── cceit_receiver_scan.m           ← CORE (voltage-driven scan)
-  ├── cceit_verify.m                  ← current conservation
-  ├── cceit_reference_layer.m         ← explicit dielectric layer
-  ├── cceit_sensitivity.m             ← freq/C/G/tissue sweeps
-  ├── cceit_plot.m                    ← all figures
-  └── tests/
-      ├── test_current_conservation.m
-      ├── test_mesh_convergence.m
-      └── test_reference_agreement.m
+  CCEIT_forward/
+  ├── .rules/development.mdc
+  ├── PROGRESS.md
+  ├── cceit_params.m
+  ├── cceit_mesh_A.m / cceit_runA_mesh.m
+  ├── cceit_mesh_B4.m / cceit_runB.m
+  ├── cceit_pairscan.m
+  ├── run_B_final.m / run_AB_final.m
+  ├── cceit_solve_pair.m / run_verify_models.m
+  ├── run_sweepA.m / run_sweepA2.m / run_sweepA3.m
+  ├── plot_results.m
+  ├── analisis_jarak.m / tes_zel.m
+  ├── cceit_recon.m                 ← deferred; do not extend without request
+  └── arsip/                        ← superseded mesh and exploratory scripts
 
 Do not create new files without updating this list and PROGRESS.md.
 
@@ -119,28 +113,21 @@ All physical and numerical parameters live in cceit_params.m.
 No hardcoded magic numbers in other files. If a value is needed
 in two places, it belongs in P.
 
-cceit_params.m must expose:
-  nElec, radius_m, insulator_thickness_m
-  Vtx, tx
-  freq_Hz (vector, ≥3 values spanning 100 kHz – 1 MHz)
-  sigma_bg, epsr_bg, eps0
-  sig_ins, er_ins
-  Ceff_F_per_m (COMPUTED from eps0*er_ins/t_ins by default)
-  Gcontact_S_per_m (default 0)
-  tol_current_conservation (default 1e-10)
-  mesh_refine_levels (default 2)
-  outdir
-
-Ceff_F_per_m default computation MUST have a comment stating:
-"This is a first-principles estimate, not a calibrated value."
+cceit_params.m must expose the model, frequency, material, mesh, and output
+parameters used by the active scripts, including:
+  netgen_bin, nElec, R, w_el, width_mode, depth
+  h_int, h_el, h_ring_B, h_ring_B_coarse
+  plot_field_grid_points, plot_arrow_grid_frac, plot_export_dpi
+  Vtx, f, sigma, epsr, eps0, d, sigma_d, epsr_d, z_el, outdir
 
 ## VERIFICATION REQUIREMENTS
 
-Every run of run_cceit.m must report:
-1. max |sum(I_elec)| per solve  → must be < tol_current_conservation
-2. max |I_floating| per solve   → must be < tol_current_conservation
-3. Mesh convergence: rel-change in I_rx between consecutive levels
-4. Reference agreement: relative error CEM vs explicit-layer (or "skipped" with reason)
+Every pair scan and A/B comparison should report:
+1. normalized global current imbalance (dcc)
+2. normalized floating-electrode current (dfloat)
+3. deviation from prescribed terminal voltages (dU)
+4. Model A/B difference at the stated B ring resolution
+5. mesh sensitivity when results from multiple ring resolutions are available
 
 Never silently swallow a failed check. Print the numeric value and a
 clear pass/fail message.
@@ -159,7 +146,7 @@ When debugging:
 
 After each working milestone:
 - Update PROGRESS.md with: what works, what doesn't, next step
-- Run at least one test in tests/
+- Use the smallest active model check that fits the task; keep expensive B4 runs manual
 
 ## STYLE GUIDE FOR COMMENTS
 
@@ -171,13 +158,13 @@ After each working milestone:
 ## CONFERENCE PAPER CONTEXT
 
 The paper is 5–6 pages, IEEE format. The code supports:
-- Section II (Proposed Workflow): cceit_build_model, cceit_params
-- Section III (EIDORS Implementation): cceit_receiver_scan
+- Section II (Proposed Workflow): cceit_mesh_A, cceit_mesh_B4, cceit_params
+- Section III (EIDORS Implementation): cceit_pairscan
 - Section IV (Results):
-  - IV.A Current conservation + mesh refinement → cceit_verify
-  - IV.B Reference comparison → cceit_reference_layer
-  - IV.C Receiver profile + spatial fields → cceit_plot
-  - IV.D Sensitivity study → cceit_sensitivity
+  - IV.A Current conservation + mesh sensitivity → cceit_pairscan, cceit_runB
+  - IV.B Lumped versus explicit layer → run_AB_final
+  - IV.C Model A profile and fields → plot_results
+  - IV.D Parameter sensitivity → run_sweepA2, run_sweepA3
 
 If the user asks to implement something not in this mapping,
 ask which section it supports. If none, it's likely OUT of scope.

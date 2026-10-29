@@ -13,7 +13,12 @@ P.width_mode = 'meters';
 P.depth = 1;         % kedalaman ekstrusi 2D [m]
 P.h_int = 0.0025;
 P.h_el  = 0.001;
-P.h_ring = P.h_int;  % hanya dipakai B2
+P.h_ring_B = 0.5e-3;       % mesh kerja Model B: empat elemen nominal sepanjang d=2 mm
+P.h_ring_B_coarse = 1e-3;  % mesh diagnostik murah untuk perbandingan awal
+P.n_reciprocity_pairs = 30;
+P.plot_field_grid_points = 9;      % sparse direction samples for a readable field plot
+P.plot_arrow_grid_frac = 0.90;     % arrow length as a fraction of sample spacing
+P.plot_export_dpi = 200;
 
 % Eksitasi
 P.Vtx = 1;           % [V]
@@ -30,4 +35,8 @@ P.epsr_d  = 3;
 P.z_el    = 0.01;    % kontak elektroda model B [Ohm.m]   ASUMSI, harus diuji variasinya
 
 P.eps0 = 8.8541878128e-12;
+
+% Output
+P.outdir = fullfile(pwd, 'hasil_cceit');
+if ~exist(P.outdir, 'dir'), mkdir(P.outdir); end
 end

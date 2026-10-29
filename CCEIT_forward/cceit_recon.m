@@ -2,7 +2,7 @@
 % Forward (anomali) -> arus -> TIA -> tegangan kompleks -> rekonstruksi sigma dan epsr.
 % Forward memakai rute voltage-driven (cceit_pairscan). Jacobian memakai rute arus
 % (calc_jacobian), karena belum dicek apakah calc_jacobian mendukung volt_pattern.
-% Perlu: cceit_params, cceit_mesh_A, cceit_pairscan (dan cceit_mesh_B jika data_src='B').
+% Perlu: cceit_params, cceit_mesh_A, cceit_mesh_B4, cceit_pairscan.
 1;
 
 function frac = frac_in(nodes, elems, fin)
@@ -75,7 +75,7 @@ switch data_src
     for e = 1:n, fD.electrode(e).z_contact = zc; end
     ringD = false(size(fD.elems,1),1);
   case 'B'
-    [fD, ringD, iD] = cceit_mesh_B(P);
+    [fD, ringD, iD] = cceit_mesh_B4(P, 'tank', P.h_ring_B);
   otherwise
     error('data_src harus A atau B');
 end

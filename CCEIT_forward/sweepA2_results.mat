@@ -1,4 +1,4 @@
-# Created by Octave 11.3.0, Wed Oct 28 18:13:25 2026 UTC
+# Created by Octave 11.3.0, Thu Oct 29 15:17:02 2026 UTC
 # name: res
 # type: struct
 # ndims: 2
@@ -245,7 +245,7 @@ epsr
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 18
+# length: 20
 # name: netgen_bin
 # type: sq_string
 # elements: 1
@@ -290,9 +290,14 @@ meters
 0.001
 
 
-# name: h_ring
+# name: h_ring_B
 # type: scalar
-0.0025000000000000001
+0.00050000000000000001
+
+
+# name: h_ring_B_coarse
+# type: scalar
+0.001
 
 
 # name: Vtx
@@ -340,6 +345,13 @@ meters
 8.8541878128000006e-12
 
 
+# name: outdir
+# type: sq_string
+# elements: 1
+# length: 69
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\hasil_cceit
+
+
 
 
 # name: iA
@@ -380,7 +392,7 @@ meters
 # type: sq_string
 # elements: 1
 # length: 20
-28-Oct-2026 18:13:24
+29-Oct-2026 15:17:00
 
 
 
