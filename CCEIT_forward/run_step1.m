@@ -13,7 +13,7 @@ G = P.sigma_d / P.d;
 C = P.eps0*P.epsr_d / P.d;
 zc = 1 / (G + 1i*w*C);
 for e = 1:P.nElec, fmdl.electrode(e).z_contact = zc; end
-fprintf('z_contact = %.4g %+.4gi Ohm.m^2\n', real(zc), imag(zc));
+fprintf('z_contact = %.4g %+.4gi Ohm.m\n', real(zc), imag(zc));
 
 tic; out = cceit_pairscan(fmdl, gamma*ones(size(fmdl.elems,1),1), P); tt = toc;
 

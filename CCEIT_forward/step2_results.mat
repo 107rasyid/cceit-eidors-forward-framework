@@ -1,4 +1,4 @@
-# Created by Octave 11.3.0, Mon Oct 26 14:15:44 2026 UTC
+# Created by Octave 11.3.0, Wed Oct 28 07:40:48 2026 UTC
 # name: outA
 # type: scalar struct
 # ndims: 2
@@ -1090,7 +1090,7 @@
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 15
+# length: 16
 # name: netgen_bin
 # type: sq_string
 # elements: 1
@@ -1121,6 +1121,13 @@ C:\Netgen\bin
 # name: h_el
 # type: scalar
 0.0015
+
+
+# name: width_mode
+# type: sq_string
+# elements: 1
+# length: 6
+meters
 
 
 # name: Vtx
@@ -1196,7 +1203,7 @@ C:\Netgen\bin
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 3
+# length: 7
 # name: nNodes
 # type: scalar
 3254
@@ -1210,6 +1217,26 @@ C:\Netgen\bin
 # name: nRing
 # type: scalar
 514
+
+
+# name: wB
+# type: scalar
+0.025999999999999999
+
+
+# name: nInteriorRingNodes
+# type: scalar
+226
+
+
+# name: meanSpan
+# type: scalar
+0.0024515548124224235
+
+
+# name: nAcross
+# type: scalar
+1.2237132063287006
 
 
 
@@ -1230,7 +1257,7 @@ C:\Netgen\bin
 # type: sq_string
 # elements: 1
 # length: 20
-26-Oct-2026 14:15:44
+28-Oct-2026 07:40:48
 
 
 

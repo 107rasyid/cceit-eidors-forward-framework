@@ -11,14 +11,14 @@ runA = @(P, f) local_runA(P, f);
 
 %% (a) delta_mesh model A pada frekuensi baseline
 % level: [skala h_int, skala h_el]; level terakhir = acuan (terhalus)
-levels = [1.0 1.0; 1.0 0.8; 0.9 0.8; 0.9 0.6];
+levels = [4.0 2.0; 3.0 1.5; 2.5 1.0];
 nL = size(levels,1);
 yL = cell(nL,1);  nel = zeros(nL,1);  ok = false(nL,1);
 
 for k = 1:nL
   P = P0;
-  P.h_int = P0.h_int * levels(k,1);
-  P.h_el  = P0.h_el  * levels(k,2);
+  P.h_int = levels(k,1)*1e-3;
+  P.h_el  = levels(k,2)*1e-3;
   try
     eidors_cache clear
     [y, ne] = runA(P, P0.f);

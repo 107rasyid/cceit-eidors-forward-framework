@@ -8,7 +8,7 @@ zc = 1 / (P.sigma_d/P.d + 1i*w*P.eps0*P.epsr_d/P.d);   % tanpa kappa
 for e = 1:P.nElec, fA.electrode(e).z_contact = zc; end
 outA = cceit_pairscan(fA, gam*ones(size(fA.elems,1),1), P);
 
-[fB, ring, iB] = cceit_mesh_B(P);
+[fB, ring, iB] = cceit_mesh_B3(P);
 gB = gam*ones(iB.nElems,1);  gB(ring) = gam_d;
 outB = cceit_pairscan(fB, gB, P);
 
