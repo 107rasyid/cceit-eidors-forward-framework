@@ -101,6 +101,13 @@ Only timings present in the supplied mesh-study output are recorded here:
   avoid B4's tank-wide refinement. These files have not been run in Octave;
   their NETGEN geometry syntax and element counts remain unconfirmed.
 - Changes in this cleanup have not been tested by executing Octave or MATLAB.
+- `scripts/run_B5_resolution_study.m` reuses the saved 1.0 mm B5 point and
+  computes 0.7 and 0.5 mm ring targets with the medium target fixed at
+  `P.h_int`. Run time and convergence remain to be measured by the user.
+- `plots/plot_AB_pair_admittance_current.m` writes separate A/B magnitude,
+  phase, and transmitter-current figures in acquisition order. The B5
+  resolution writer now retains each `y_B` vector for plotting. These plot
+  scripts have not been run in Octave.
 
 ## Next numerical work
 

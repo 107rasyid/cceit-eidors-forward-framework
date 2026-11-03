@@ -1,0 +1,8 @@
+Running run_AB_A2_B5_coarse.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_AB_A2_B5_coarse_console_20261103_102400.txt
+Started: 03-Nov-2026 10:24:00
+
+=== Coarse A2/B5 comparison: f=500 kHz, h_ring=1.00 mm ===
+warning: isdir is obsolete; use isfolder or dir_in_loadpath instead
+Model A2: 3178 elements, max electrode-arc mismatch 0.001403
+ EIDORS:[Removed 365 objects with 53864224 bytes from cache]

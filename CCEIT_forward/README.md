@@ -65,6 +65,7 @@ run_logged('run_AB_final')
 run_logged('plot_results')
 run_logged('run_A_electrode_resolution_study')
 run_logged('run_AB_A2_B5_coarse')
+run('plots/plot_AB_pair_admittance_current.m')
 ```
 
 `run_AB_A2_B5_coarse` compares the corrected Model A mesh with experimental
@@ -72,6 +73,13 @@ Model B5. B5 assigns separate local mesh-size targets to the tissue core
 (`P.h_int`) and explicit ring (`P.h_ring_B_coarse`, 1 mm by default). It saves
 pair CSV, MAT results, and a magnitude/phase figure. The experimental mesh has
 not been validated yet; run it manually in Octave before using its values.
+After a valid 1 mm result exists, run `run_logged('run_B5_resolution_study')`
+to reuse it and calculate the 0.7 and 0.5 mm ring points while keeping the
+medium mesh target fixed.
+`plot_AB_pair_admittance_current` then exports six individual figures (A/B
+magnitude, phase, and current) and one acquisition-order CSV. With `Vtx=1 V`,
+the current magnitude is numerically equal to admittance magnitude; only the
+units differ (A versus S, each per metre depth).
 
 Without `run_logged`, scripts can still be run directly, but their terminal
 output is not automatically archived. Individual scripts:

@@ -109,8 +109,10 @@ This is essential for the reproducibility claim.
   │   └── run_A_electrode_resolution_study.m
   │   └── run_B_resolution_study.m
   │   └── run_AB_A2_B5_coarse.m
+  │   └── run_B5_resolution_study.m
   ├── plots/                        ← figures and table-ready summaries
   │   └── summary_section_tables.m
+  │   └── plot_AB_pair_admittance_current.m / cceit_plot_pair_series.m
   ├── results/                      ← MAT, CSV, PNG, and run log outputs
   └── arsip/                        ← superseded, exploratory, and out-of-scope code
 
