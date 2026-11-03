@@ -62,7 +62,11 @@ function draw_map_cc(nodes, elems, cdata, clim, ttl, ec, wspan, Rb, tk, lm, r_in
   axis equal; axis(lm); caxis(clim); colormap(jet); colorbar; title(ttl);
 end
 
-setenv('PATH', ['C:\Netgen\bin;' getenv('PATH')]);
+netgen_bin = getenv('CCEIT_NETGEN_BIN');
+if isempty(netgen_bin) || exist(netgen_bin, 'dir') ~= 7
+    error('Legacy solver: set CCEIT_NETGEN_BIN to the Netgen bin folder');
+end
+setenv('PATH', [netgen_bin ';' getenv('PATH')]);
 eidors_debug off call_netgen
 
 %% Parameter
@@ -70,7 +74,7 @@ e0 = 8.854e-12;  f = 500e3;  w = 2*pi*f;  Vexc = 1;
 adm = @(sig, er) sig + 1i*w*e0*er;
 n_elec = 16;  R = 0.09;  w_el = 0.026;           % radius tank konduktif, lebar elektroda (m)
 t_ins = 0.003;  er_ins = 9;  sig_ins = 1e-9;     % 3 mm, er 9 ~ setara 1 mm, er 3
-z_el  = 0.01;                                    % Ohm.m^2, kontak elektroda (kecil)
+z_el  = 0.01;                                    % Ohm.m, kontak elektroda (kecil)
 Rf = 10e3;  SNR = 100;                           % TIA ideal; SNR terhadap max|dI| (Inf = tanpa noise)
 alpha_rel = 1e-2;                                % regularisasi (relatif), tala manual
 phantom = 1;                                     % 1 = lingkaran besar dekat elektroda 2 | 2 = paru + jantung

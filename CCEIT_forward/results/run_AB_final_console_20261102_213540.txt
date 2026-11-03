@@ -1,0 +1,17 @@
+Running run_AB_final.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_AB_final_console_20261102_213540.txt
+Started: 02-Nov-2026 21:35:40
+
+=== Model A/B comparison at 500 kHz ===
+ EIDORS:[Removed 365 objects with 64517280 bytes from cache]
+Model A: 3178 elements, h_int = 2.50 mm
+Model B coarse: memakai hasil tersimpan C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\cceit_B_coarse_results.mat
+Model B: h_ring = 1.00 mm | 20438 elements | delta_layer = 0.1021 | median |y_A|/|y_B| = 0.8987
+  max dcc = 7.86e-12 | max floating/It = 1.59e-12 | max dev U = 0 V
+ EIDORS:[Removed 365 objects with 53864224 bytes from cache]
+ EIDORS:[Removed 95 objects with 275721160 bytes from cache]
+Model B: h_ring = 0.50 mm | 80062 elements | delta_layer = 0.0877 | median |y_A|/|y_B| = 0.9130
+  max dcc = 1.91e-11 | max floating/It = 1.62e-12 | max dev U = 0 V
+Hasil tersimpan: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\cceit_AB_final_results.mat
+
+Completed: 02-Nov-2026 21:46:16

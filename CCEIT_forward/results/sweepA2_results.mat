@@ -1,0 +1,472 @@
+# Created by Octave 11.3.0, Mon Nov 02 22:15:58 2026 UTC
+# name: res
+# type: struct
+# ndims: 2
+ 1 5
+# length: 5
+# name: name
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 1
+d
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 6
+epsr_d
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 7
+sigma_d
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 5
+sigma
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 4
+epsr
+
+
+
+
+
+# name: vals
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 6
+ 0.001 0.002 0.0030000000000000001 0.0045000000000000005 0.0060000000000000001 0.0090000000000000011
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 1 3 6 9
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0 1.0000000000000001e-09 9.9999999999999995e-08 1.0000000000000001e-05 0.0001
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 0.012500000000000001 0.025000000000000001 0.050000000000000003 0.10000000000000001
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 3
+ 40 80 150
+
+
+
+
+
+# name: delta
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 6
+ 0.99385697639630999 0 0.33275818815986918 0.5549367091280889 0.66611882366257635 0.77735878365902911
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 0.66611882366257635 0 0.99385697639630999 1.9794546008815672
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0 1.1950920665618869e-05 0.0011950553865024336 0.11914001699937492 1.1592562858244582
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 0.025967946939901954 0 0.013318453823529943 0.020003816752614735
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 3
+ 0.001184353043428851 0 0.0020394333603689107
+
+
+
+
+
+# name: medabs
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 6
+ 0.00075022340796065967 0.00037661459958568562 0.00025135540784545531 0.00016766758091694148 0.00012578882346501349 8.388666834772813e-05
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 0.00012578882346501349 0.00037661459958568562 0.00075022340796065967 0.0011203448699208304
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0.00037661459958568562 0.00037661446388817223 0.00037660129802747071 0.00037795132779842909 0.0005688722249107929
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 0.00037339877452682434 0.00037661459958568562 0.00037742286011042795 0.00037763526354876861
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 3
+ 0.00037709811431458029 0.00037661459958568562 0.00037577558346513256
+
+
+
+
+
+# name: medphase
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 6
+ 86.845764386452757 88.417396817923205 88.943839606040839 89.295431867155045 89.471406371647859 89.647494981355791
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 89.471406371647859 88.417396817923205 86.845764386452757 85.28761480706352
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 88.417396817923205 88.416712465955428 88.348961644881541 81.606383767332318 38.478993192001646
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 4
+ 86.933571487701826 88.417396817923205 89.202267890152228 89.600321742219393
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 3
+ 88.405936798274141 88.417396817923205 88.451477833585827
+
+
+
+
+
+
+
+# name: res_degen
+# type: scalar
+0
+
+
+# name: P0
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 25
+# name: project_root
+# type: sq_string
+# elements: 1
+# length: 57
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward
+
+
+# name: netgen_bin
+# type: sq_string
+# elements: 1
+# length: 13
+C:/Netgen/bin
+
+
+# name: nElec
+# type: scalar
+16
+
+
+# name: R
+# type: scalar
+0.052999999999999999
+
+
+# name: w_el
+# type: scalar
+0.017999999999999999
+
+
+# name: width_mode
+# type: sq_string
+# elements: 1
+# length: 6
+meters
+
+
+# name: depth
+# type: scalar
+1
+
+
+# name: h_int
+# type: scalar
+0.0025000000000000001
+
+
+# name: h_el
+# type: scalar
+0.001
+
+
+# name: h_ring_B
+# type: scalar
+0.00050000000000000001
+
+
+# name: h_ring_B_coarse
+# type: scalar
+0.001
+
+
+# name: n_reciprocity_pairs
+# type: scalar
+30
+
+
+# name: plot_field_grid_points
+# type: scalar
+9
+
+
+# name: plot_arrow_grid_frac
+# type: scalar
+0.90000000000000002
+
+
+# name: plot_export_dpi
+# type: scalar
+200
+
+
+# name: Vtx
+# type: scalar
+1
+
+
+# name: f
+# type: scalar
+500000
+
+
+# name: sigma
+# type: scalar
+0.025000000000000001
+
+
+# name: epsr
+# type: scalar
+80
+
+
+# name: d
+# type: scalar
+0.002
+
+
+# name: sigma_d
+# type: scalar
+0
+
+
+# name: epsr_d
+# type: scalar
+3
+
+
+# name: z_el
+# type: scalar
+0.01
+
+
+# name: eps0
+# type: scalar
+8.8541878128000006e-12
+
+
+# name: outdir
+# type: sq_string
+# elements: 1
+# length: 65
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
+
+
+
+
+# name: iA
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 6
+# name: nNodes
+# type: scalar
+1677
+
+
+# name: nElems
+# type: scalar
+3178
+
+
+# name: rmax
+# type: scalar
+0.052999999999999999
+
+
+# name: target_electrode_arc
+# type: scalar
+0.01808764984387766
+
+
+# name: electrode_arc
+# type: matrix
+# rows: 16
+# columns: 1
+ 0.018106827946287384
+ 0.018098422528232967
+ 0.018113023332844647
+ 0.018098372208564358
+ 0.018106304522341996
+ 0.018098090706449025
+ 0.018113025404570039
+ 0.018098413832711283
+ 0.018106571470778335
+ 0.018098423636539265
+ 0.018113027793227984
+ 0.01809808947269265
+ 0.018106548139735459
+ 0.018098436855832782
+ 0.018113022428047222
+ 0.018098405666185133
+
+
+# name: electrode_arc_max_rel_error
+# type: scalar
+0.0014030539937124038
+
+
+
+
+# name: meta
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 4
+# name: version
+# type: sq_string
+# elements: 1
+# length: 6
+11.3.0
+
+
+# name: date
+# type: sq_string
+# elements: 1
+# length: 20
+02-Nov-2026 22:15:58
+
+
+# name: eidors_version
+# type: sq_string
+# elements: 1
+# length: 4
+3.12
+
+
+# name: netgen_version
+# type: sq_string
+# elements: 1
+# length: 7
+unknown
+
+
+
+

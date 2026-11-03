@@ -1,0 +1,27 @@
+octave:17> run_B_resolution_study(true)
+Model B mesh convergence (reference h_ring=0.35 mm)
+h=1.00 mm | elems=20438 (ring 1391, medium 19047) | across d=2.00 | delta_mesh=0.0213 | delta_layer=0.0465 | median ratio=0.9548 | time=NaN s
+h=0.70 mm | elems=42164 (ring 2908, medium 39256) | across d=2.98 | delta_mesh=0.0116 | delta_layer=0.0376 | median ratio=0.9641 | time=122.0 s
+h=0.50 mm | elems=80062 (ring 5600, medium 74462) | across d=4.06 | delta_mesh=0.00513 | delta_layer=0.0316 | median ratio=0.9702 | time=NaN s
+h=0.35 mm | elems=175518 (ring 12109, medium 163409) | across d=6.10 | delta_mesh=0 | delta_layer=0.0269 | median ratio=0.9752 | time=941.0 s
+B-resolution MAT: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B_resolution_study.mat
+B-resolution CSV: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B_resolution_study.csv
+ans =
+
+  4x1 struct array containing the fields:
+
+    h_ring_m
+    nElems_total
+    nElems_ring
+    nElems_medium
+    across_d
+    delta_mesh
+    delta_layer
+    median_ratio_A_B
+    time_scan_s
+    time_source
+    max_dcc
+    y_B
+    info_B
+
+octave:18> diary off

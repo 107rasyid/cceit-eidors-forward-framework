@@ -25,6 +25,12 @@ It is NOT a reconstruction/inverse-problem paper.
   mesh sensitivity, and Model A/B comparison
 - Parameter sweeps for Model A and focused Model B resolution checks
 - Reproducible scripts with parameters centralized in cceit_params.m
+- Only `Delta_p` is in scope for sensitivity; do not add reconstruction,
+  anomaly, or `Delta_shape` studies unless requested separately.
+
+Project paths are centralized in `setup_paths.m`. Configure `EIDORS_ROOT` and
+`CCEIT_NETGEN_BIN` in the environment; do not embed workstation-specific paths
+in source files. Active results belong under `results/`.
 
 ### OUT OF SCOPE — DO NOT IMPLEMENT
 - Inverse problem, image reconstruction (NOSER, Gauss-Newton, Tikhonov)
@@ -93,17 +99,20 @@ This is essential for the reproducibility claim.
   CCEIT_forward/
   ├── .rules/development.mdc
   ├── PROGRESS.md
-  ├── cceit_params.m
-  ├── cceit_mesh_A.m / cceit_runA_mesh.m
-  ├── cceit_mesh_B4.m / cceit_runB.m
-  ├── cceit_pairscan.m
-  ├── run_B_final.m / run_AB_final.m
-  ├── cceit_solve_pair.m / run_verify_models.m
-  ├── run_sweepA.m / run_sweepA2.m / run_sweepA3.m
-  ├── plot_results.m
-  ├── analisis_jarak.m / tes_zel.m
-  ├── cceit_recon.m                 ← deferred; do not extend without request
-  └── arsip/                        ← superseded mesh and exploratory scripts
+  ├── README.md
+  ├── setup_paths.m / run_all.m
+  ├── core/                         ← params, meshes, pair solvers, metadata
+  │   └── cceit_same_baseline.m / cceit_pair_list.m / cceit_electrode_boundary_lengths.m
+  │   └── cceit_mesh_B5.m / cceit_runB5.m
+  ├── scripts/                      ← verification, A/B, mesh study, sweeps
+  │   ├── cceit_run_stage.m / run_logged.m
+  │   └── run_A_electrode_resolution_study.m
+  │   └── run_B_resolution_study.m
+  │   └── run_AB_A2_B5_coarse.m
+  ├── plots/                        ← figures and table-ready summaries
+  │   └── summary_section_tables.m
+  ├── results/                      ← MAT, CSV, PNG, and run log outputs
+  └── arsip/                        ← superseded, exploratory, and out-of-scope code
 
 Do not create new files without updating this list and PROGRESS.md.
 
@@ -115,7 +124,7 @@ in two places, it belongs in P.
 
 cceit_params.m must expose the model, frequency, material, mesh, and output
 parameters used by the active scripts, including:
-  netgen_bin, nElec, R, w_el, width_mode, depth
+  project_root, netgen_bin, nElec, R, w_el, width_mode, depth
   h_int, h_el, h_ring_B, h_ring_B_coarse
   plot_field_grid_points, plot_arrow_grid_frac, plot_export_dpi
   Vtx, f, sigma, epsr, eps0, d, sigma_d, epsr_d, z_el, outdir
@@ -131,6 +140,8 @@ Every pair scan and A/B comparison should report:
 
 Never silently swallow a failed check. Print the numeric value and a
 clear pass/fail message.
+Use `Pair admittance (per m depth)` for admittance plot labels and `Ohm.m` for
+contact impedance units.
 
 ## DEVELOPMENT WORKFLOW
 

@@ -1,0 +1,5 @@
+h_ring_mm,nElems_total,nElems_ring,nElems_medium,across_d,delta_mesh,delta_layer,median_abs_yA_over_yB,time_scan_s,time_source
+1,20438,1391,19047,1.99953,0.0212593857041,0.0465085563532,0.954755743675,NaN,"current-baseline run_AB_final result"
+0.7,42164,2908,39256,2.98,0.0115504134747,0.0375670805071,0.964082677276,122,"preserved prior B4 scan"
+0.5,80062,5600,74462,4.05869,0.00512594394241,0.0316174620481,0.970236770479,NaN,"current-baseline run_AB_final result"
+0.35,175518,12109,163409,6.10383,0,0.0268805064404,0.975150013482,941,"preserved prior B4 scan"
