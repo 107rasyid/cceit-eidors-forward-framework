@@ -1,118 +1,47 @@
 # Progress
 
-## Paper scope
+## Paper workflow
 
-1. Verify voltage-driven, current-sense operation in EIDORS using voltage
-   stimulation and floating electrodes.
-2. Compare the lumped contact impedance in Model A with the conformal explicit
-   layer in Model B, reporting `delta_layer` and the tested mesh resolution.
-3. Sweep frequency, layer parameters, and medium parameters using Model A and
-   `Delta_p` across the 120 electrode pairs.
+The paper goals are (1) verify EIDORS voltage-driven/current-sense operation,
+(2) compare lumped contact impedance A2 with explicit-layer B5, and (3) study
+frequency/layer/medium sensitivity in Model A. Goal 2 is partially supported:
+the tested `delta_layer` values are about 8.5–10%, above the former 5% target.
+Do not tune A2 to B5 and claim independent equivalence.
 
-Reconstruction, anomalies, and `Delta_shape` are outside the paper scope.
+The active forward workflow is `run_all.m`; the optional reconstruction demo
+is explicitly separate and does not change the paper workflow.
 
-## Project layout
+## Active structure
 
-- `setup_paths.m` configures the project folders and loads EIDORS from
-  `EIDORS_ROOT` when needed.
-- `core/` contains model parameters, mesh builders, pair solvers, metadata, and
-  baseline comparison helper.
-- `scripts/` contains verification, A/B comparison, B mesh-resolution,
-  thickness, and sweep studies.
-- `plots/` contains publication figures, sweep summaries, and table-ready CSV
-  exporters.
-- `results/` contains saved MAT, CSV, PNG, and orchestration log files.
-- `arsip/` preserves superseded, exploratory, and out-of-scope scripts.
-- `run_all.m` runs the workflow, catches per-stage failures, and writes
-  `results/run_all_log.txt`. It assembles the B resolution series from matching
-  preserved scans when available; missing B scans are recomputed only with
-  `run_all(true)`. The d=1,3,5 mm thickness scans are also skipped by default
-  and enabled with `run_all(true)`.
-- `scripts/cceit_run_stage.m` runs each legacy-style script in an isolated
-  workspace so a script-level `clear` does not erase the orchestration state.
-- `plots/summary_section_tables.m` writes CSVs for verification, both mesh
-  studies, A/B layer resolution, layer sensitivity, medium sensitivity, and
-  any completed d=1,3,5 mm study points. `Delta_shape` is excluded by design.
+- `core/`: parameters, A2/B5 meshes and solvers, pair scans, metadata.
+- `scripts/`: verification, A2/B5 comparison and ring-resolution study, and
+  Model A parameter sweeps.
+- `plots/`: saved-result plots, pair-series plots, mesh display, sweep summary.
+- `demo_reconstruction/`: helper functions for the optional 6-case demo.
+- `results/`: new run outputs; currently empty after archiving prior outputs.
+- `arsip/results_pre_cleanup/`: all pre-cleanup generated outputs.
+- `arsip/superseded_B4_workflow/`: scripts/functions tied to the superseded B4
+  comparison workflow.
 
-## Numerical reference values
+## Current numerical evidence
 
-- Before correcting Netgen coordinate quantization, Model A had 2870 elements,
-  max `dcc=1.1e-12`, and `delta_layer` values 0.0465 (`h_ring=1.0 mm`) and
-  0.0316 (`h_ring=0.5 mm`) at `d=2 mm`, `f=500 kHz`. These are historical
-  references and must be regenerated because the corrected mesh geometry can
-  change Model A results.
-- Model A reciprocity was previously checked on 30 pairs; rerun verification
-  after regenerating the normalized-geometry mesh.
-- Model B mesh refinement also makes the medium denser; the B4 generator does
-  not currently isolate ring and medium element sizes.
-- `d=1, 3, 5 mm` A/B results depend on running `scripts/run_thickness_study.m`;
-  those values are not inferred from the `d=2 mm` baseline.
-- The old `tes_B4_results.mat` and `diag_mesh_B_d2mm.mat` are preserved under
-  `results/` and are inputs for the default B-resolution table assembly. The
-  new consolidated output is `results/B_resolution_study.mat/.csv`.
+- Corrected A mesh has 3,178 elements and electrode arc mismatch 0.14%.
+- B5 at `h_ring=1.0/0.7/0.5 mm` has respectively 5,082/5,838/7,274 total
+  elements; medium counts 3,844/4,282/4,234; ring counts 1,238/1,556/3,040.
+- `delta_layer` at those three ring sizes is 10.06%, 9.83%, 8.99%; a separate
+  0.35 mm run reported 8.46%.
+- B5 coarse checks: `dcc=7.41e-12`, floating/It `1.59e-12`, and voltage
+  deviation 0 V. Reciprocity must be rechecked after any mesh/solver changes.
 
-## Output metadata
+## Recent cleanup and demo status
 
-Active result writers call `cceit_make_metadata` and save interpreter version,
-date, EIDORS version, and NETGEN version (`unknown` when unavailable). Existing
-legacy MAT files have been preserved as-is; they are not retroactively edited.
-
-## Runtime evidence
-
-Only timings present in the supplied mesh-study output are recorded here:
-
-- Model A, 2870 elements: 7 seconds per scan.
-- Model B scan: 44 seconds at `h_ring=1.0 mm`, 122 seconds at 0.7 mm,
-  319 seconds at 0.5 mm, and 941 seconds at 0.35 mm.
-- Total runtimes for the runner scripts, verification, parameter sweeps, and
-  plots were not recorded. No totals are estimated here.
-
-## Known setup constraints
-
-- `setup_paths.m` currently configures the user's EIDORS and NETGEN locations;
-  update those two values there if either installation moves.
-- `scripts/run_logged.m` runs one selected script and saves its console output,
-  including failures, to a timestamped text file in `results/`.
-- `setup_paths.m` does not recursively add EIDORS paths again when EIDORS is
-  already initialized; this avoids stale `.git` checkpoint paths in Octave.
-- Baseline cache matching ignores `h_ring_B` and `h_ring_B_coarse`; each saved
-  B scan is validated against its explicit `h_ring` value, while all physical
-  and core mesh parameters must still match. This permits reuse of older B4
-  sweep MAT files that predate those run-selection fields.
-- `run_B_resolution_study` can reuse current-baseline 1.0 and 0.5 mm scans from
-  `cceit_AB_final_results.mat`; only missing 0.7 and 0.35 mm scans need solving
-  when legacy B4 MAT files belong to another physical baseline.
-- Pair ordering is centralized in `cceit_pair_list.m` and follows acquisition
-  order: tx ascending, then rx ascending with `tx < rx`. Pair plots and CSV
-  exports use that same index; regenerating them does not require a new solve.
-- Model A Netgen geometry is now generated at unit radius and scaled to SI
-  units afterward. EIDORS writes geometry coordinates to three decimal places;
-  generating directly in metres had quantized the 53 mm tank geometry in 1 mm
-  steps. The previous per-electrode width-calibration attempt did not work and
-  was removed. The normalized-geometry change still needs an Octave rerun; the
-  old calibration output (including its increased magnitude variation) is not
-  a valid result for the current mesh builder.
-- Added experimental B5 mesh functions with separate local maximum element
-  sizes for the explicit dielectric ring and tissue core, plus a coarse A2/B5
-  comparison script at `h_ring=1 mm`. The core target stays at `P.h_int` to
-  avoid B4's tank-wide refinement. These files have not been run in Octave;
-  their NETGEN geometry syntax and element counts remain unconfirmed.
-- Changes in this cleanup have not been tested by executing Octave or MATLAB.
-- `scripts/run_B5_resolution_study.m` reuses the saved 1.0 mm B5 point and
-  computes 0.7 and 0.5 mm ring targets with the medium target fixed at
-  `P.h_int`. Run time and convergence remain to be measured by the user.
-- `plots/plot_AB_pair_admittance_current.m` writes separate A/B magnitude,
-  phase, and transmitter-current figures in acquisition order. The B5
-  resolution writer now retains each `y_B` vector for plotting. These plot
-  scripts have not been run in Octave.
-
-## Next numerical work
-
-- Run the thickness study when ready; it may take several scans and no runtime
-  estimate is available for its requested mesh points.
-- Re-run the A/B and verification scripts after setting up the new paths to
-  reconfirm the reference values. These runs have intentionally not been made
-  during this cleanup.
-- Re-run `run_A_electrode_resolution_study` in Octave to check whether unit-
-  radius geometry reduces `std(|Y|)/mean(|Y|)` within each separation group;
-  inspect the reported max electrode-arc mismatch at the same time.
+- `run_all.m` now targets A2/B5 verification, coarse comparison, B5 resolution,
+  sweeps, summaries, and current plots. It has not been run after cleanup.
+- Previous results were moved to `arsip/results_pre_cleanup/` for a clean run.
+- `demo_reconstruction.m` executes three example inclusion layouts for A2 and
+  coarse B5 through forward current, ideal TIA, complex transfer-impedance
+  difference, and regularized complex-Jacobian reconstruction of real and
+  imaginary admittivity changes. Its helper functions are in
+  `demo_reconstruction/`. It has not been run in Octave; outputs are a workflow
+  demonstration, not validated tissue reconstructions.
+- No Octave code was run during this cleanup/demo implementation.

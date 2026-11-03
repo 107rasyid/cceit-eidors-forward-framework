@@ -82,6 +82,30 @@ Each stage is logged in `results/run_all_log.txt` and
 continue; check both logs before using the outputs. The initial full run needs
 all sweeps and several forward scans, so it can take a few minutes or longer.
 
+## Reconstruction demonstration (separate from the paper workflow)
+
+The root script `demo_reconstruction.m` runs six standalone educational cases:
+three inclusion layouts with Model A2 and coarse Model B5. Each case computes
+homogeneous and anomalous voltage-driven pair scans, converts transmitter
+currents through an ideal TIA (`Vtia=-Rf*I`), recovers the complex currents,
+forms differential transfer-impedance data, and reconstructs real and
+imaginary admittivity changes with a regularized complex Jacobian. The layouts
+are one circle; two circles on the right and a square on the left; and a top
+circle, lower-right circle, and lower-left square. The demo uses 3 MHz,
+`d=1 mm`, `Rf=10 kOhm`, and example inclusion properties inherited from the
+former reconstruction script; these are illustrative assumptions, not
+validated tissue values. Each case catches its own failure and saves its own
+MAT, TIA CSV, and reconstruction PNG under `results/reconstruction_demo/`.
+
+Run it in Octave with:
+
+```octave
+run('demo_reconstruction.m')
+```
+
+It is intentionally not called by `run_all`, which remains the forward-paper
+workflow.
+
 ## Run one step at a time
 
 Each command below assumes `setup_paths` has already run. `run_logged` saves
@@ -134,6 +158,7 @@ run('plots/plot_mesh_AB.m')
 
 - `setup_paths.m`: EIDORS/NETGEN setup and project paths.
 - `run_all.m`: ordered workflow and stage logs.
+- `demo_reconstruction.m`: separate six-case A2/B5 reconstruction demo.
 - `README.md`, `PROGRESS.md`: project context, status, and known limitations.
 
 ### `core/`
