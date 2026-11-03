@@ -1,19 +1,10 @@
-function report = run_all(run_expensive)
+function report = run_all()
 % RUN_ALL Run the forward-model study stages and record each stage status.
 % Purpose: provide one repeatable entry point for verification, comparison,
 % parameter sweeps, summaries, and figures.
-% Inputs: run_expensive (optional logical); true computes missing fine B mesh
-%         levels and includes the six additional thickness-study scans.
-%         Default false reuses the preserved B4 sweep when it matches.
+% Inputs: none; uses the active A2/B5 workflow and current sweep parameters.
 % Outputs: report struct with stage names, statuses, and messages.
 % Manuscript ref: Sections IV.A-IV.D.
-
-if nargin < 1 || isempty(run_expensive)
-    run_expensive = false;
-end
-if ~isscalar(run_expensive)
-    error('run_all: run_expensive must be a scalar logical value');
-end
 
 project_root = fileparts(mfilename('fullpath'));
 outdir = fullfile(project_root, 'results');
@@ -71,31 +62,17 @@ if strcmp(preflight_status, 'failed')
     rethrow(preflight_error);
 end
 
-stage_names = {'run_verify_models', 'run_AB_final', 'run_B_resolution_study', ...
-    'run_thickness_study', 'run_sweepA', 'run_sweepA2', 'run_sweepA3', ...
-    'summary_sweeps', 'summary_section_tables', 'plot_results', ...
-    'plot_pairs_AB', 'plot_mesh_AB'};
+stage_names = {'run_verify_models', 'run_AB_A2_B5_coarse', ...
+    'run_B5_resolution_study', 'run_sweepA', 'run_sweepA2', 'run_sweepA3', ...
+    'summary_sweeps', 'plot_results', 'plot_AB_pair_admittance_current', ...
+    'plot_mesh_AB'};
 stage_dirs = {'scripts', 'scripts', 'scripts', 'scripts', 'scripts', ...
-    'scripts', 'scripts', 'plots', 'plots', 'plots', 'plots', 'plots'};
+    'scripts', 'plots', 'plots', 'plots', 'plots'};
 report = repmat(struct('name', '', 'status', '', 'message', ''), ...
     numel(stage_names), 1);
 
 for k = 1:numel(stage_names)
     report(k).name = stage_names{k};
-    if k == 4 && ~run_expensive
-        stage_start = datestr(now);
-        report(k).status = 'skipped';
-        report(k).message = 'Skipped by run_expensive=false';
-        fprintf('SKIP  %s (pass true to include)\n', stage_names{k});
-        fprintf(log_id, 'SKIP  %s: %s\n', report(k).name, report(k).message);
-        output_text = sprintf('SKIP  %s (pass true to include)', stage_names{k});
-        fprintf(console_csv_id, '"%s","%s","%s","%s","%s","%s"\n', ...
-            stage_names{k}, report(k).status, stage_start, datestr(now), ...
-            strrep(report(k).message, '"', '""'), ...
-            strrep(output_text, '"', '""'));
-        continue;
-    end
-
     stage_path = fullfile(project_root, stage_dirs{k}, ...
         [stage_names{k} '.m']);
     capture_path = fullfile(P.outdir, [stage_names{k} '_console.tmp']);
@@ -106,11 +83,7 @@ for k = 1:numel(stage_names)
     diary(capture_path);
     fprintf('START %s\n', stage_names{k});
     try
-        if k == 3
-            run_B_resolution_study(run_expensive);
-        else
-            cceit_run_stage(stage_path);
-        end
+        cceit_run_stage(stage_path);
         report(k).status = 'completed';
         report(k).message = '';
         fprintf('DONE  %s\n', stage_names{k});

@@ -85,9 +85,6 @@ Only timings present in the supplied mesh-study output are recorded here:
 - Pair ordering is centralized in `cceit_pair_list.m` and follows acquisition
   order: tx ascending, then rx ascending with `tx < rx`. Pair plots and CSV
   exports use that same index; regenerating them does not require a new solve.
-- `scripts/run_A_electrode_resolution_study.m` reports electrode-node counts,
-  effective arc widths and per-electrode mean |Y| at the baseline, then sweeps
-  Model A `h_el` at 1.0, 0.6, and 0.4 mm with per-level error capture.
 - Model A Netgen geometry is now generated at unit radius and scaled to SI
   units afterward. EIDORS writes geometry coordinates to three decimal places;
   generating directly in metres had quantized the 53 mm tank geometry in 1 mm

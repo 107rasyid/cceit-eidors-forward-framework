@@ -1,12 +1,12 @@
-% PLOT_MESH_AB  Compare the Model A and explicit Model B edge meshes.
-% Implements: Section IV.A/B, mesh construction and explicit ring resolution.
+% PLOT_MESH_AB Compare the A2 and locally refined B5 meshes.
+% Implements: Section IV.B, mesh construction and explicit ring resolution.
 clear; close all; clc;
 
 P = cceit_params();
 P.d = 2e-3;
 eidors_cache clear
 [fmdl_A, info_A] = cceit_mesh_A(P);
-[fmdl_B, ring_B, info_B] = cceit_mesh_B4(P, 'tank', P.h_ring_B);
+[fmdl_B, ring_B, info_B] = cceit_mesh_B5(P, P.h_ring_B);
 
 fig = figure('Name', 'Model A/B mesh close-up', ...
     'Position', [80 80 1180 560], 'Color', 'w');
@@ -31,7 +31,7 @@ axis equal;
 xlim(view_x); ylim(view_y);
 set(gca, 'FontSize', 10, 'LineWidth', 0.8);
 xlabel('x (m)'); ylabel('y (m)');
-title(sprintf('Model B, h_{ring}=%.2f mm (%d ring elements)', ...
+title(sprintf('Model B5, h_{ring}=%.2f mm (%d ring elements)', ...
     P.h_ring_B*1e3, info_B.nRing));
 legend(h_ring, {'Explicit dielectric ring'}, 'Location', 'northeast');
 
