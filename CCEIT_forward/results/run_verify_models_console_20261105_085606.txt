@@ -1,0 +1,10 @@
+Running run_verify_models.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_verify_models_console_20261105_085606.txt
+Started: 05-Nov-2026 08:56:06
+
+warning: isdir is obsolete; use isfolder or dir_in_loadpath instead
+Model A: 5182 elements | max dcc = 1.27e-12 | max floating/It = 5.75e-16 | max dev U = 0 V | max reciprocity error = 5.72e-13 (30 pairs)
+Model B: 11872 elements (5421 ring) | h_ring = 0.35 mm | max dcc = 8.45e-12 | max floating/It = 2.16e-12 | max dev U = 0 V | max reciprocity error = 6.48e-12 (30 pairs)
+Hasil verifikasi tersimpan: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\cceit_verification_results.mat
+
+Completed: 05-Nov-2026 08:57:05

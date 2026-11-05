@@ -1,9 +1,9 @@
-# Created by Octave 11.3.0, Tue Nov 03 11:35:20 2026 UTC
+# Created by Octave 11.3.0, Thu Nov 05 09:25:23 2026 UTC
 # name: P
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 25
+# length: 28
 # name: project_root
 # type: sq_string
 # elements: 1
@@ -63,6 +63,21 @@ meters
 # name: h_ring_B_coarse
 # type: scalar
 0.001
+
+
+# name: h_int_A3
+# type: scalar
+0.002
+
+
+# name: h_int_B6
+# type: scalar
+0.002
+
+
+# name: h_ring_B6_coarse
+# type: scalar
+0.00035
 
 
 # name: n_reciprocity_pairs
@@ -148,15 +163,15 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 6
+# length: 8
 # name: nNodes
 # type: scalar
-1677
+2672
 
 
 # name: nElems
 # type: scalar
-3178
+5182
 
 
 # name: rmax
@@ -173,27 +188,37 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # type: matrix
 # rows: 16
 # columns: 1
- 0.018106827946287384
- 0.018098422528232967
- 0.018113023332844647
- 0.018098372208564358
- 0.018106304522341996
- 0.018098090706449025
- 0.018113025404570039
- 0.018098413832711283
- 0.018106571470778335
- 0.018098423636539265
- 0.018113027793227984
- 0.01809808947269265
- 0.018106548139735459
- 0.018098436855832782
- 0.018113022428047222
- 0.018098405666185133
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500832
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
 
 
 # name: electrode_arc_max_rel_error
 # type: scalar
-0.0014030539937124038
+0.001413874923863102
+
+
+# name: h_medium
+# type: scalar
+0.002
+
+
+# name: h_electrode
+# type: scalar
+0.002
 
 
 
@@ -205,37 +230,37 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # length: 8
 # name: nElems
 # type: scalar
-7274
+11872
 
 
 # name: nNodes
 # type: scalar
-3982
+6433
 
 
 # name: nRing
 # type: scalar
-3040
+5421
 
 
 # name: nMedium
 # type: scalar
-4234
+6451
 
 
 # name: h_ring
 # type: scalar
-0.00050000000000000001
+0.00035
 
 
 # name: h_medium
 # type: scalar
-0.0025000000000000001
+0.002
 
 
 # name: rmax
 # type: scalar
-0.055000000000000021
+0.055000000000000028
 
 
 # name: nAcross
@@ -247,12 +272,12 @@ Inf
 
 # name: nElems_medium_B
 # type: scalar
-4234
+6451
 
 
 # name: nElems_ring_B
 # type: scalar
-3040
+5421
 
 
 # name: d_m
@@ -262,7 +287,7 @@ Inf
 
 # name: h_ring_m
 # type: scalar
-0.00050000000000000001
+0.00035
 
 
 
@@ -283,7 +308,7 @@ Inf
 # type: sq_string
 # elements: 1
 # length: 20
-03-Nov-2026 11:35:20
+05-Nov-2026 09:25:23
 
 
 # name: eidors_version

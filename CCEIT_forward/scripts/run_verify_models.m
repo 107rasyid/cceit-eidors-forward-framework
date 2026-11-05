@@ -10,8 +10,8 @@ gamma = P.sigma + 1i*omega*P.eps0*P.epsr;
 gamma_layer = P.sigma_d + 1i*omega*P.eps0*P.epsr_d;
 eidors_cache clear
 
-%% Model A: lumped interface
-[fmdl_A, info_A] = cceit_mesh_A(P);
+%% Model A3: lumped interface with refined mesh
+[fmdl_A, info_A] = cceit_mesh_A3(P);
 z_contact_A = 1 / (P.sigma_d/P.d + 1i*omega*P.eps0*P.epsr_d/P.d);
 for e = 1:P.nElec
     fmdl_A.electrode(e).z_contact = z_contact_A;
@@ -42,8 +42,8 @@ fprintf(['Model A: %d elements | max dcc = %.3g | max floating/It = %.3g | ' ...
     check_A.nElems, check_A.max_dcc, check_A.max_dfloat, check_A.max_dU, ...
     check_A.max_reciprocity_error, numel(pair_index));
 
-%% Model B5: explicit dielectric ring with medium held at the A mesh target
-[fmdl_B, ring_B, info_B] = cceit_mesh_B5(P, P.h_ring_B_coarse);
+%% Model B6: explicit dielectric ring with refined medium
+[fmdl_B, ring_B, info_B] = cceit_mesh_B6(P, P.h_ring_B6_coarse);
 gamma_B = gamma * ones(info_B.nElems, 1);
 gamma_B(ring_B) = gamma_layer;
 out_B = cceit_pairscan(fmdl_B, gamma_B, P);
@@ -58,7 +58,7 @@ for k = 1:numel(pair_index)
 end
 check_B = struct('nElems', info_B.nElems, ...
     'nRing', info_B.nRing, ...
-    'h_ring', P.h_ring_B_coarse, ...
+    'h_ring', P.h_ring_B6_coarse, ...
     'max_dcc', max(out_B.dcc), ...
     'max_dfloat', max(out_B.dfloat), ...
     'max_dU', max(out_B.dU), ...

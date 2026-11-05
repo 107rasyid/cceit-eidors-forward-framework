@@ -1,0 +1,9 @@
+Running plot_mesh_AB.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_mesh_AB_console_20261105_092445.txt
+Started: 05-Nov-2026 09:24:45
+
+ EIDORS:[Removed 6 objects with 1992120 bytes from cache]
+Mesh figure: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_mesh.png
+Data: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_mesh.mat
+
+Completed: 05-Nov-2026 09:25:24

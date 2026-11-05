@@ -1,12 +1,12 @@
-% PLOT_MESH_AB Compare the A2 and locally refined B5 meshes.
+% PLOT_MESH_AB Compare the A3 and locally refined B6 meshes.
 % Implements: Section IV.B, mesh construction and explicit ring resolution.
 clear; close all; clc;
 
 P = cceit_params();
 P.d = 2e-3;
 eidors_cache clear
-[fmdl_A, info_A] = cceit_mesh_A(P);
-[fmdl_B, ring_B, info_B] = cceit_mesh_B5(P, P.h_ring_B);
+[fmdl_A, info_A] = cceit_mesh_A3(P);
+[fmdl_B, ring_B, info_B] = cceit_mesh_B6(P, P.h_ring_B6_coarse);
 
 fig = figure('Name', 'Model A/B mesh close-up', ...
     'Position', [80 80 1180 560], 'Color', 'w');
@@ -19,7 +19,7 @@ axis equal;
 xlim(view_x); ylim(view_y);
 set(gca, 'FontSize', 10, 'LineWidth', 0.8);
 xlabel('x (m)'); ylabel('y (m)');
-title(sprintf('Model A mesh (%d elements)', info_A.nElems));
+title(sprintf('Model A3 mesh (%d elements)', info_A.nElems));
 
 subplot(1, 2, 2);
 show_fem(fmdl_B);
@@ -31,15 +31,16 @@ axis equal;
 xlim(view_x); ylim(view_y);
 set(gca, 'FontSize', 10, 'LineWidth', 0.8);
 xlabel('x (m)'); ylabel('y (m)');
-title(sprintf('Model B5, h_{ring}=%.2f mm (%d ring elements)', ...
-    P.h_ring_B*1e3, info_B.nRing));
-legend(h_ring, {'Explicit dielectric ring'}, 'Location', 'northeast');
+title(sprintf('Model B6, h_{ring}=%.2f mm (%d ring elements)', ...
+    P.h_ring_B6_coarse*1e3, info_B.nRing));
+legend(h_ring, {'Explicit dielectric ring'}, 'Location', 'southoutside', ...
+    'Orientation', 'horizontal');
 
 meta = cceit_make_metadata(P);
 png_path = fullfile(P.outdir, 'fig_mesh.png');
 mesh_summary = struct('info_A', info_A, 'info_B', info_B, ...
     'nElems_medium_B', info_B.nElems-info_B.nRing, ...
-    'nElems_ring_B', sum(ring_B(:)), 'd_m', P.d, 'h_ring_m', P.h_ring_B);
+    'nElems_ring_B', sum(ring_B(:)), 'd_m', P.d, 'h_ring_m', P.h_ring_B6_coarse);
 result_path = fullfile(P.outdir, 'fig_mesh.mat');
 save(result_path, 'P', 'mesh_summary', 'meta');
 if exist('OCTAVE_VERSION', 'builtin')

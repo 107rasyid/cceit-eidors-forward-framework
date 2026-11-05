@@ -13,8 +13,8 @@ for k = 1:numel(files)
     loaded{k} = load(result_path);
 end
 FA = loaded{1}; A2 = loaded{2}; A3 = loaded{3};
-if ~isfield(FA, 'freqs') || ~isfield(FA, 'Sp') || ...
-        ~isfield(FA, 'Yf') || ~isfield(A2, 'res') || ~isfield(A3, 'R')
+if ~isfield(FA, 'freqs') || ~isfield(FA, 'Yf') || ...
+        ~isfield(A2, 'res') || ~isfield(A3, 'R')
     error('summary_sweeps: one or more sweep result files have an unexpected format');
 end
 baseline_ok = isfield(FA, 'P0') && isfield(A2, 'P0') && isfield(A3, 'P0') && ...
@@ -29,8 +29,14 @@ if ~baseline_ok
     error('summary_sweeps: sweep baselines differ from cceit_params; rerun the relevant sweeps');
 end
 
-frequency_range = [min(FA.Sp(:)) max(FA.Sp(:))];
 frequency_parameter = sprintf('f = %.3g to %.3g Hz', min(FA.freqs), max(FA.freqs));
+freq_base_idx = find(abs(FA.freqs - P.f) == min(abs(FA.freqs - P.f)), 1);
+y_base = FA.Yf(:, freq_base_idx);
+frequency_delta = zeros(numel(FA.freqs), 1);
+for k = 1:numel(FA.freqs)
+    frequency_delta(k) = norm(FA.Yf(:,k) - y_base) / norm(y_base);
+end
+frequency_range = [min(frequency_delta) max(frequency_delta)];
 
 layer_names = {'d', 'epsr_d', 'sigma_d'};
 layer_delta = [];
@@ -70,11 +76,11 @@ for k = 1:numel(medium_names)
     end
 end
 for k = 1:numel(A3.R)
-    medium_delta = [medium_delta; A3.R(k).Sp_sig(:); A3.R(k).Sp_eps(:)];
+    medium_delta = [medium_delta; A3.R(k).Delta_p_sig(:); A3.R(k).Delta_p_eps(:)];
 end
 if ~isempty(A3.R)
-    sig_values = [A3.R.sig];
-    eps_values = [A3.R.eps];
+    sig_values = [A3.R.sig_vals];
+    eps_values = [A3.R.eps_vals];
     medium_range_text{end+1} = sprintf('A3 sigma %.3g-%.3g S/m', ...
         min(sig_values), max(sig_values));
     medium_range_text{end+1} = sprintf('A3 epsr %.3g-%.3g', ...
@@ -110,26 +116,11 @@ for k = 1:numel(study)
 end
 fclose(fid);
 
+meta = cceit_make_metadata(P);
+result_path = fullfile(P.outdir, 'summary_sweeps.mat');
 freq_Hz = FA.freqs(:).';
 median_abs_Y = median(abs(FA.Yf), 1);
 median_phase_deg = median(angle(FA.Yf), 1)*180/pi;
-fig = figure('Name', 'Frequency response summary', ...
-    'Position', [100 100 1100 520], 'Color', 'w');
-subplot(1,2,1);
-loglog(freq_Hz, median_abs_Y, 'o-', 'LineWidth', 1.7, 'MarkerSize', 6);
-grid on; box on;
-xlabel('Frequency (Hz)'); ylabel('Median pair admittance (per m depth)');
-title('Pair admittance magnitude');
-subplot(1,2,2);
-semilogx(freq_Hz, median_phase_deg, 's-', 'LineWidth', 1.7, 'MarkerSize', 6);
-grid on; box on;
-xlabel('Frequency (Hz)'); ylabel('Median phase (degrees)');
-title('Pair admittance phase');
-
-meta = cceit_make_metadata(P);
-png_path = fullfile(P.outdir, 'summary_frequency.png');
-print('-dpng', sprintf('-r%d', P.plot_export_dpi), png_path);
-result_path = fullfile(P.outdir, 'summary_sweeps.mat');
 save(result_path, 'P', 'study', 'parameter_range', 'delta_range', ...
     'freq_Hz', 'median_abs_Y', 'median_phase_deg', 'meta');
-fprintf('CSV: %s\nPNG: %s\nMAT: %s\n', csv_path, png_path, result_path);
+fprintf('CSV: %s\nMAT: %s\n', csv_path, result_path);

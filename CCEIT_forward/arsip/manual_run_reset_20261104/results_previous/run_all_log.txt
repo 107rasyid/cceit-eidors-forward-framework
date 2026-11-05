@@ -1,0 +1,14 @@
+CC-EIT run_all started: 04-Nov-2026 12:42:56
+DONE  run_verify_models
+DONE  run_AB_A3_B6_coarse
+DONE  run_B6_resolution_study
+DONE  run_sweepA
+DONE  run_sweepA2
+DONE  run_sweepA3
+DONE  summary_sweeps
+FAIL  plot_results: structure has no member 'sig'
+DONE  plot_AB_pair_admittance_current
+DONE  plot_mesh_AB
+DONE  plot_sweepA2
+DONE  plot_sweepA3_medium
+CC-EIT run_all finished: 04-Nov-2026 13:21:15

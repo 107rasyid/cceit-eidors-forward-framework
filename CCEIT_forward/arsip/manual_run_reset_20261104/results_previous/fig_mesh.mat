@@ -1,0 +1,324 @@
+# Created by Octave 11.3.0, Wed Nov 04 13:45:03 2026 UTC
+# name: P
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 28
+# name: project_root
+# type: sq_string
+# elements: 1
+# length: 57
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward
+
+
+# name: netgen_bin
+# type: sq_string
+# elements: 1
+# length: 13
+C:/Netgen/bin
+
+
+# name: nElec
+# type: scalar
+16
+
+
+# name: R
+# type: scalar
+0.052999999999999999
+
+
+# name: w_el
+# type: scalar
+0.017999999999999999
+
+
+# name: width_mode
+# type: sq_string
+# elements: 1
+# length: 6
+meters
+
+
+# name: depth
+# type: scalar
+1
+
+
+# name: h_int
+# type: scalar
+0.0025000000000000001
+
+
+# name: h_el
+# type: scalar
+0.001
+
+
+# name: h_ring_B
+# type: scalar
+0.00050000000000000001
+
+
+# name: h_ring_B_coarse
+# type: scalar
+0.001
+
+
+# name: h_int_A3
+# type: scalar
+0.002
+
+
+# name: h_int_B6
+# type: scalar
+0.002
+
+
+# name: h_ring_B6_coarse
+# type: scalar
+0.00035
+
+
+# name: n_reciprocity_pairs
+# type: scalar
+30
+
+
+# name: plot_field_grid_points
+# type: scalar
+9
+
+
+# name: plot_arrow_grid_frac
+# type: scalar
+0.90000000000000002
+
+
+# name: plot_export_dpi
+# type: scalar
+200
+
+
+# name: Vtx
+# type: scalar
+1
+
+
+# name: f
+# type: scalar
+500000
+
+
+# name: sigma
+# type: scalar
+0.025000000000000001
+
+
+# name: epsr
+# type: scalar
+80
+
+
+# name: d
+# type: scalar
+0.002
+
+
+# name: sigma_d
+# type: scalar
+0
+
+
+# name: epsr_d
+# type: scalar
+3
+
+
+# name: z_el
+# type: scalar
+0.01
+
+
+# name: eps0
+# type: scalar
+8.8541878128000006e-12
+
+
+# name: outdir
+# type: sq_string
+# elements: 1
+# length: 65
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
+
+
+
+
+# name: mesh_summary
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 6
+# name: info_A
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 7
+# name: nNodes
+# type: scalar
+2672
+
+
+# name: nElems
+# type: scalar
+5182
+
+
+# name: rmax
+# type: scalar
+0.052999999999999999
+
+
+# name: target_electrode_arc
+# type: scalar
+0.01808764984387766
+
+
+# name: electrode_arc
+# type: matrix
+# rows: 16
+# columns: 1
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500832
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+
+
+# name: electrode_arc_max_rel_error
+# type: scalar
+0.001413874923863102
+
+
+# name: h_medium
+# type: scalar
+0.002
+
+
+
+
+# name: info_B
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 8
+# name: nElems
+# type: scalar
+11872
+
+
+# name: nNodes
+# type: scalar
+6433
+
+
+# name: nRing
+# type: scalar
+5421
+
+
+# name: nMedium
+# type: scalar
+6451
+
+
+# name: h_ring
+# type: scalar
+0.00035
+
+
+# name: h_medium
+# type: scalar
+0.002
+
+
+# name: rmax
+# type: scalar
+0.055000000000000028
+
+
+# name: nAcross
+# type: scalar
+Inf
+
+
+
+
+# name: nElems_medium_B
+# type: scalar
+6451
+
+
+# name: nElems_ring_B
+# type: scalar
+5421
+
+
+# name: d_m
+# type: scalar
+0.002
+
+
+# name: h_ring_m
+# type: scalar
+0.00035
+
+
+
+
+# name: meta
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 4
+# name: version
+# type: sq_string
+# elements: 1
+# length: 6
+11.3.0
+
+
+# name: date
+# type: sq_string
+# elements: 1
+# length: 20
+04-Nov-2026 13:45:03
+
+
+# name: eidors_version
+# type: sq_string
+# elements: 1
+# length: 4
+3.12
+
+
+# name: netgen_version
+# type: sq_string
+# elements: 1
+# length: 7
+unknown
+
+
+
+

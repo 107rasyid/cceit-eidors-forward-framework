@@ -100,20 +100,23 @@ This is essential for the reproducibility claim.
   ├── .rules/development.mdc
   ├── PROGRESS.md
   ├── README.md
-  ├── setup_paths.m / run_all.m
+  ├── setup_paths.m / scripts/run_logged.m  (manual goal-by-goal workflow)
   ├── demo_reconstruction.m            ← optional six-case forward/inverse demo
   ├── core/                         ← params, meshes, pair solvers, metadata
   │   └── cceit_same_baseline.m / cceit_pair_list.m / cceit_electrode_boundary_lengths.m
-  │   └── cceit_mesh_B5.m / cceit_runB5.m
+  │   └── cceit_mesh_B6.m / cceit_runB6.m
   ├── scripts/                      ← verification, A/B, mesh study, sweeps
   │   ├── cceit_run_stage.m / run_logged.m
+  │   └── export_sweep_csv.m
   │   └── run_A_electrode_resolution_study.m
   │   └── run_B_resolution_study.m
-  │   └── run_AB_A2_B5_coarse.m
-  │   └── run_B5_resolution_study.m
+  │   └── run_AB_A3_B6_coarse.m
+  │   └── run_B6_resolution_study.m
   ├── plots/                        ← figures and table-ready summaries
   │   └── summary_section_tables.m
+  │   └── plot_B6_resolution_study.m
   │   └── plot_AB_pair_admittance_current.m / cceit_plot_pair_series.m
+  │   └── cceit_plot_layer_sensitivity.m / cceit_plot_medium_sensitivity.m
   ├── results/                      ← MAT, CSV, PNG, and run log outputs
   └── arsip/                        ← superseded, exploratory, and out-of-scope code
   └── demo_reconstruction/           ← demo-only reconstruction helpers
@@ -173,13 +176,13 @@ After each working milestone:
 ## CONFERENCE PAPER CONTEXT
 
 The paper is 5–6 pages, IEEE format. The code supports:
-- Section II (Proposed Workflow): cceit_mesh_A, cceit_mesh_B4, cceit_params
+  - Section II (Proposed Workflow): cceit_mesh_A3, cceit_mesh_B6, cceit_params
 - Section III (EIDORS Implementation): cceit_pairscan
 - Section IV (Results):
-  - IV.A Current conservation + mesh sensitivity → cceit_pairscan, cceit_runB
-  - IV.B Lumped versus explicit layer → run_AB_final
-  - IV.C Model A profile and fields → plot_results
-  - IV.D Parameter sensitivity → run_sweepA2, run_sweepA3
+  - IV.A Current conservation + mesh sensitivity → cceit_pairscan, run_verify_models
+  - IV.B Lumped versus explicit layer → run_AB_A3_B6_coarse, run_B6_resolution_study
+  - IV.D Parameter sensitivity → run_sweepA, run_sweepA2, run_sweepA3,
+    plot_results
 
 If the user asks to implement something not in this mapping,
 ask which section it supports. If none, it's likely OUT of scope.

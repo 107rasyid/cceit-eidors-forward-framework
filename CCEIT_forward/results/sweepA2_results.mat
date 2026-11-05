@@ -1,9 +1,9 @@
-# Created by Octave 11.3.0, Tue Nov 03 11:18:50 2026 UTC
+# Created by Octave 11.3.0, Thu Nov 05 09:48:41 2026 UTC
 # name: res
 # type: struct
 # ndims: 2
  1 5
-# length: 5
+# length: 10
 # name: name
 # type: cell
 # rows: 1
@@ -27,14 +27,6 @@ epsr_d
 # name: <cell-element>
 # type: sq_string
 # elements: 1
-# length: 7
-sigma_d
-
-
-
-# name: <cell-element>
-# type: sq_string
-# elements: 1
 # length: 5
 sigma
 
@@ -48,6 +40,136 @@ epsr
 
 
 
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 7
+sigma_d
+
+
+
+
+
+# name: baseline
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: scalar
+0.002
+
+
+
+# name: <cell-element>
+# type: scalar
+3
+
+
+
+# name: <cell-element>
+# type: scalar
+0.025000000000000001
+
+
+
+# name: <cell-element>
+# type: scalar
+80
+
+
+
+# name: <cell-element>
+# type: scalar
+0
+
+
+
+
+
+# name: unit
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 2
+mm
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 0
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 1
+# length: 3
+S/m
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 0
+
+
+
+# name: <cell-element>
+# type: sq_string
+# elements: 0
+
+
+
+
+
+# name: factors
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0.25 0.5 1 2 4
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0.25 0.5 1 2 4
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0.25 0.5 1 2 4
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 0.25 0.5 1 2 4
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ NaN NaN NaN NaN NaN NaN NaN
+
+
+
 
 
 # name: vals
@@ -57,16 +179,8 @@ epsr
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 6
- 0.001 0.002 0.0030000000000000001 0.0045000000000000005 0.0060000000000000001 0.0090000000000000011
-
-
-
-# name: <cell-element>
-# type: matrix
-# rows: 1
-# columns: 4
- 1 3 6 9
+# columns: 5
+ 0.00050000000000000001 0.001 0.002 0.0040000000000000001 0.0080000000000000002
 
 
 
@@ -74,23 +188,31 @@ epsr
 # type: matrix
 # rows: 1
 # columns: 5
- 0 1.0000000000000001e-09 9.9999999999999995e-08 1.0000000000000001e-05 0.0001
+ 0.75 1.5 3 6 12
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 4
- 0.012500000000000001 0.025000000000000001 0.050000000000000003 0.10000000000000001
+# columns: 5
+ 0.0062500000000000003 0.012500000000000001 0.025000000000000001 0.050000000000000003 0.10000000000000001
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 3
- 40 80 150
+# columns: 5
+ 20 40 80 160 320
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ 0 1e-08 9.9999999999999995e-08 9.9999999999999995e-07 1.0000000000000001e-05 0.0001 0.00029999999999999997
 
 
 
@@ -103,16 +225,8 @@ epsr
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 6
- 0.99385697639630999 0 0.33275818815986918 0.5549367091280889 0.66611882366257635 0.77735878365902911
-
-
-
-# name: <cell-element>
-# type: matrix
-# rows: 1
-# columns: 4
- 0.66611882366257635 0 0.99385697639630999 1.9794546008815672
+# columns: 5
+ 2.9548037330680255 0.9938586259144585 0 0.49936848254903216 0.74954367473361383
 
 
 
@@ -120,45 +234,45 @@ epsr
 # type: matrix
 # rows: 1
 # columns: 5
- 0 1.1950920665618869e-05 0.0011950553865024336 0.11914001699937492 1.1592562858244582
+ 0.74954367473361383 0.49936848254903216 0 0.9938586259144585 2.9548037330680255
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 4
- 0.025967946939901954 0 0.013318453823529943 0.020003816752614735
+# columns: 5
+ 0.072346604639618783 0.025956931349543608 0 0.013312778627984835 0.019995290507899621
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 3
- 0.001184353043428851 0 0.0020394333603689107
+# columns: 5
+ 0.0017782320148300203 0.0011838486861276737 0 0.0023247753361489505 0.0066464953522630118
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ 0 0.00011950896537571191 0.0011950563283779213 0.011947231620306363 0.11914026214025171 1.159271916484222 3.2826222661666917
 
 
 
 
 
-# name: medabs
+# name: median_abs
 # type: cell
 # rows: 1
 # columns: 5
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 6
- 0.00075022340796065967 0.00037661459958568562 0.00025135540784545531 0.00016766758091694148 0.00012578882346501349 8.388666834772813e-05
-
-
-
-# name: <cell-element>
-# type: matrix
-# rows: 1
-# columns: 4
- 0.00012578882346501349 0.00037661459958568562 0.00075022340796065967 0.0011203448699208304
+# columns: 5
+ 0.0014860765828752216 0.0007502380569341569 0.00037661895127410322 0.0001885977906786541 9.4366416109013996e-05
 
 
 
@@ -166,45 +280,45 @@ epsr
 # type: matrix
 # rows: 1
 # columns: 5
- 0.00037661459958568562 0.00037661446388817223 0.00037660129802747071 0.00037795132779842909 0.0005688722249107929
+ 9.4366416109013996e-05 0.0001885977906786541 0.00037661895127410322 0.0007502380569341569 0.0014860765828752216
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 4
- 0.00037339877452682434 0.00037661459958568562 0.00037742286011042795 0.00037763526354876861
+# columns: 5
+ 0.00036296912544397627 0.00037340675625210386 0.00037661895127410322 0.00037742957690791769 0.00037764041574428378
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 3
- 0.00037709811431458029 0.00037661459958568562 0.00037577558346513256
+# columns: 5
+ 0.00037730820574454822 0.0003771026541944139 0.00037661895127410322 0.00037566573496292322 0.00037415872904660003
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ 0.00037661895127410322 0.00037661759744851426 0.0003766056568321745 0.00037651037858318481 0.00037795694132647671 0.00056889021186139741 0.0012787806581634068
 
 
 
 
 
-# name: medphase
+# name: median_phase
 # type: cell
 # rows: 1
 # columns: 5
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 6
- 86.845764386452757 88.417396817923205 88.943839606040839 89.295431867155045 89.471406371647859 89.647494981355791
-
-
-
-# name: <cell-element>
-# type: matrix
-# rows: 1
-# columns: 4
- 89.471406371647859 88.417396817923205 86.845764386452757 85.28761480706352
+# columns: 5
+ 83.74858417017073 86.847406138940826 88.418220524035775 89.20790095898478 89.603668668061218
 
 
 
@@ -212,23 +326,123 @@ epsr
 # type: matrix
 # rows: 1
 # columns: 5
- 88.417396817923205 88.416712465955428 88.348961644881541 81.606383767332318 38.478993192001646
+ 89.603668668061218 89.20790095898478 88.418220524035775 86.847406138940826 83.74858417017073
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 4
- 86.933571487701826 88.417396817923205 89.202267890152228 89.600321742219393
+# columns: 5
+ 84.548591831519801 86.935169352940676 88.418220524035775 89.202682976333435 89.600529693832058
 
 
 
 # name: <cell-element>
 # type: matrix
 # rows: 1
-# columns: 3
- 88.405936798274141 88.417396817923205 88.451477833585827
+# columns: 5
+ 88.403348078974162 88.406766241391722 88.418220524035775 88.458503892158717 88.594493862666368
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ 88.418220524035775 88.411376993123966 88.34978524020859 87.733899511079528 81.607196435664804 38.479709946858385 14.572112193348893
+
+
+
+
+
+# name: phase_diff
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ -4.6696363538650445 -1.5708143850949483 0 0.78968043494900542 1.1854481440254432
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ 1.1854481440254432 0.78968043494900542 0 -1.5708143850949483 -4.6696363538650445
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ -3.869628692515974 -1.4830511710950987 0 0.78446245229766021 1.1823091697962838
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 5
+ -0.014872445061612893 -0.011454282644052682 0 0.04028336812294242 0.17627333863059391
+
+
+
+# name: <cell-element>
+# type: matrix
+# rows: 1
+# columns: 7
+ 0 -0.0068435309118086707 -0.06843528382718489 -0.68432101295624648 -6.8110240883709707 -49.938510577177389 -73.846108330686889
+
+
+
+
+
+# name: flag
+# type: cell
+# rows: 1
+# columns: 5
+# name: <cell-element>
+# type: bool matrix
+# rows: 1
+# columns: 5
+ 1 0 0 0 1
+
+
+
+# name: <cell-element>
+# type: bool matrix
+# rows: 1
+# columns: 5
+ 0 0 0 0 0
+
+
+
+# name: <cell-element>
+# type: bool matrix
+# rows: 1
+# columns: 5
+ 0 0 0 0 0
+
+
+
+# name: <cell-element>
+# type: bool matrix
+# rows: 1
+# columns: 5
+ 0 0 0 0 0
+
+
+
+# name: <cell-element>
+# type: bool matrix
+# rows: 1
+# columns: 7
+ 0 0 0 0 0 0 0
 
 
 
@@ -245,7 +459,7 @@ epsr
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 25
+# length: 28
 # name: project_root
 # type: sq_string
 # elements: 1
@@ -305,6 +519,21 @@ meters
 # name: h_ring_B_coarse
 # type: scalar
 0.001
+
+
+# name: h_int_A3
+# type: scalar
+0.002
+
+
+# name: h_int_B6
+# type: scalar
+0.002
+
+
+# name: h_ring_B6_coarse
+# type: scalar
+0.00035
 
 
 # name: n_reciprocity_pairs
@@ -385,15 +614,15 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # type: scalar struct
 # ndims: 2
  1 1
-# length: 6
+# length: 8
 # name: nNodes
 # type: scalar
-1677
+2672
 
 
 # name: nElems
 # type: scalar
-3178
+5182
 
 
 # name: rmax
@@ -410,27 +639,37 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # type: matrix
 # rows: 16
 # columns: 1
- 0.018106827946287384
- 0.018098422528232967
- 0.018113023332844647
- 0.018098372208564358
- 0.018106304522341996
- 0.018098090706449025
- 0.018113025404570039
- 0.018098413832711283
- 0.018106571470778335
- 0.018098423636539265
- 0.018113027793227984
- 0.01809808947269265
- 0.018106548139735459
- 0.018098436855832782
- 0.018113022428047222
- 0.018098405666185133
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500832
+ 0.018113223518423534
+ 0.018098632106500825
+ 0.018106857621967485
+ 0.018098632106500829
+ 0.018113223518423534
+ 0.018098632106500825
 
 
 # name: electrode_arc_max_rel_error
 # type: scalar
-0.0014030539937124038
+0.001413874923863102
+
+
+# name: h_medium
+# type: scalar
+0.002
+
+
+# name: h_electrode
+# type: scalar
+0.002
 
 
 
@@ -451,7 +690,7 @@ C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results
 # type: sq_string
 # elements: 1
 # length: 20
-03-Nov-2026 11:18:50
+05-Nov-2026 09:48:41
 
 
 # name: eidors_version

@@ -21,6 +21,11 @@ P.h_int = 0.0025;
 P.h_el  = 0.001;
 P.h_ring_B = 0.5e-3;       % mesh kerja Model B: empat elemen nominal sepanjang d=2 mm
 P.h_ring_B_coarse = 1e-3;  % mesh diagnostik murah untuk perbandingan awal
+
+% Model A3 and B6 refined mesh parameters
+P.h_int_A3 = 0.002;        % refined medium for Model A3 (2 mm, between 1.25 and 2.5)
+P.h_int_B6 = 0.002;        % refined medium for Model B6 (2 mm, between 1.25 and 2.5)
+P.h_ring_B6_coarse = 0.35e-3;  % coarse ring for B6 starting point
 P.n_reciprocity_pairs = 30;
 P.plot_field_grid_points = 9;      % sparse direction samples for a readable field plot
 P.plot_arrow_grid_frac = 0.90;     % arrow length as a fraction of sample spacing

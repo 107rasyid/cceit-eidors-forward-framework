@@ -1,0 +1,24 @@
+Running run_B6_resolution_study.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_B6_resolution_study_console_20261105_090017.txt
+Started: 05-Nov-2026 09:00:17
+
+Reuse B6 h_ring=0.35 mm from C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_results.mat
+h_ring=0.35 mm | total=11872 medium=6451 ring=5421 | delta_layer=0.0844945 | median |yA|/|yB|=0.916203 | time=NaN s
+
+=== B6 resolution: h_ring=0.25 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 205077120 bytes from cache]
+h_ring=0.25 mm | total=13636 medium=6384 ring=7252 | delta_layer=0.0824211 | median |yA|/|yB|=0.918301 | time=67.5 s
+
+=== B6 resolution: h_ring=0.20 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 239268216 bytes from cache]
+h_ring=0.20 mm | total=17550 medium=6340 ring=11210 | delta_layer=0.0799999 | median |yA|/|yB|=0.920603 | time=130.0 s
+
+=== B6 resolution: h_ring=0.15 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 307481824 bytes from cache]
+h_ring=0.15 mm | total=21830 medium=6532 ring=15298 | delta_layer=0.0789574 | median |yA|/|yB|=0.921738 | time=177.6 s
+
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B6_resolution_study.mat
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B6_resolution_study.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_resolution_study.png
+
+Completed: 05-Nov-2026 09:06:33

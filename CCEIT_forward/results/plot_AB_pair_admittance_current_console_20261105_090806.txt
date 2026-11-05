@@ -1,0 +1,15 @@
+Running plot_AB_pair_admittance_current.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_AB_pair_admittance_current_console_20261105_090806.txt
+Started: 05-Nov-2026 09:08:06
+
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_Y_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_Y_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_Y_phase.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_Y_phase.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_I_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_I_magnitude.png
+Source: B6 resolution study | f=500 kHz | h_ring=0.15 mm
+With Vtx=1 V: |Itx| = |Ypair|*|Vtx|; current and admittance magnitudes differ only by units.
+CSV: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_pairs_acquisition_order.csv
+
+Completed: 05-Nov-2026 09:08:08

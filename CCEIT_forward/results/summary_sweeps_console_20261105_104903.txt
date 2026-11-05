@@ -1,0 +1,13 @@
+Running summary_sweeps.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps_console_20261105_104903.txt
+Started: 05-Nov-2026 10:49:03
+
+Study        | Parameter range                                                            | Delta_p min  | Delta_p max 
+------------------------------------------------------------------------------------------------------------------------
+frequency    | f = 1e+04 to 1e+07 Hz                                                      | 0            | 15.36       
+layer        | d 0.5-8 mm; epsr_d 0.75-12; sigma_d 0-0.0003 S/m                           | 0            | 3.283       
+medium       | sigma 0.00625-0.1 S/m; epsr 20-320; A3 sigma 0.00625-0.1 S/m; A3 epsr 20-320 | 0            | 0.3926      
+CSV: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps.csv
+MAT: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps.mat
+
+Completed: 05-Nov-2026 10:49:03

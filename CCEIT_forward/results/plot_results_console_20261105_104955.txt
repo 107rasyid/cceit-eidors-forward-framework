@@ -1,0 +1,12 @@
+Running plot_results.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_results_console_20261105_104955.txt
+Started: 05-Nov-2026 10:49:55
+
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig4b_layer.png
+Saved medium sensitivity figure: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig4c_tissue.png
+Goal 3 plots saved:
+  C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig4a_freq.png
+  C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig4b_layer.png
+  C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig4c_tissue.png
+
+Completed: 05-Nov-2026 10:50:00

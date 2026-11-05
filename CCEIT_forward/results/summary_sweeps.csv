@@ -1,4 +1,4 @@
 Study,Parameter range,Delta_p min,Delta_p max
-frequency,"f = 1e+04 to 3e+06 Hz",0,4.61357051599
-layer,"d 1-9 mm; epsr_d 1-9; sigma_d 0-0.0001 S/m",0,1.97945460088
-medium,"sigma 0.0125-0.1 S/m; epsr 40-150; A3 sigma 0.05-1 S/m; A3 epsr 10-400",0,0.533987261775
+frequency,"f = 1e+04 to 1e+07 Hz",0,15.357126196
+layer,"d 0.5-8 mm; epsr_d 0.75-12; sigma_d 0-0.0003 S/m",0,3.28262226617
+medium,"sigma 0.00625-0.1 S/m; epsr 20-320; A3 sigma 0.00625-0.1 S/m; A3 epsr 20-320",0,0.392564002117

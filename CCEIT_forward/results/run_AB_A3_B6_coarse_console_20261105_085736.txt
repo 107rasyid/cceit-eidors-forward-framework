@@ -1,0 +1,18 @@
+Running run_AB_A3_B6_coarse.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_AB_A3_B6_coarse_console_20261105_085736.txt
+Started: 05-Nov-2026 08:57:36
+
+=== Refined A3/B6 comparison: f=500 kHz, h_ring=0.35 mm ===
+ EIDORS:[Removed 910 objects with 362769476 bytes from cache]
+Model A3: 5182 elements, h_medium=2.00 mm, max electrode-arc mismatch 0.001414
+ EIDORS:[Removed 365 objects with 85963496 bytes from cache]
+Model B6: total=11872, medium=6451, ring=5421 elements; h_medium=2.00 mm, h_ring=0.35 mm
+delta_layer=0.0844945 | median |yA|/|yB|=0.916203
+B6 max dcc=8.45e-12 | floating/It=2.16e-12 | dev U=0 V
+Timing for 120 pairs: A3 mesh=5.31 s, A3 scan=6.88 s; B6 mesh=30.92 s, B6 scan=9.73 s
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_results.mat
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_pairs.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_timing.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_AB_A3_B6_coarse.png
+
+Completed: 05-Nov-2026 08:58:32

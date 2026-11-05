@@ -1,0 +1,398 @@
+#Tujuan 1
+run:
+setup_paths
+run_logged('run_verify_models')
+
+hasil:
+warning: isdir is obsolete; use isfolder or dir_in_loadpath instead
+Model A: 5182 elements | max dcc = 1.27e-12 | max floating/It = 5.75e-16 | max dev U = 0 V | max reciprocity error = 5.72e-13 (30 pairs)
+Model B: 11872 elements (5421 ring) | h_ring = 0.35 mm | max dcc = 8.45e-12 | max floating/It = 2.16e-12 | max dev U = 0 V | max reciprocity error = 6.48e-12 (30 pairs)
+Hasil verifikasi tersimpan: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\cceit_verification_results.mat
+
+Completed: 05-Nov-2026 08:57:05
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_verify_models_console_20261105_085606.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_verify_models_console_20261105_085606.txt
+octave:7>
+
+#Tujuan 2
+run:
+run_logged('run_AB_A3_B6_coarse')
+
+hasil:
+=== Refined A3/B6 comparison: f=500 kHz, h_ring=0.35 mm ===
+ EIDORS:[Removed 910 objects with 362769476 bytes from cache]
+Model A3: 5182 elements, h_medium=2.00 mm, max electrode-arc mismatch 0.001414
+ EIDORS:[Removed 365 objects with 85963496 bytes from cache]
+Model B6: total=11872, medium=6451, ring=5421 elements; h_medium=2.00 mm, h_ring=0.35 mm
+delta_layer=0.0844945 | median |yA|/|yB|=0.916203
+B6 max dcc=8.45e-12 | floating/It=2.16e-12 | dev U=0 V
+Timing for 120 pairs: A3 mesh=5.31 s, A3 scan=6.88 s; B6 mesh=30.92 s, B6 scan=9.73 s
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_results.mat
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_pairs.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_timing.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_AB_A3_B6_coarse.png
+
+Completed: 05-Nov-2026 08:58:32
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_AB_A3_B6_coarse_console_20261105_085736.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_AB_A3_B6_coarse_console_20261105_085736.txt
+octave:8>
+
+run:
+run_logged('run_B6_resolution_study')
+
+hasil:
+Reuse B6 h_ring=0.35 mm from C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_coarse_results.mat
+h_ring=0.35 mm | total=11872 medium=6451 ring=5421 | delta_layer=0.0844945 | median |yA|/|yB|=0.916203 | time=NaN s
+
+=== B6 resolution: h_ring=0.25 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 205077120 bytes from cache]
+h_ring=0.25 mm | total=13636 medium=6384 ring=7252 | delta_layer=0.0824211 | median |yA|/|yB|=0.918301 | time=67.5 s
+
+=== B6 resolution: h_ring=0.20 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 239268216 bytes from cache]
+h_ring=0.20 mm | total=17550 medium=6340 ring=11210 | delta_layer=0.0799999 | median |yA|/|yB|=0.920603 | time=130.0 s
+
+=== B6 resolution: h_ring=0.15 mm; medium h=2.00 mm ===
+ EIDORS:[Removed 365 objects with 307481824 bytes from cache]
+h_ring=0.15 mm | total=21830 medium=6532 ring=15298 | delta_layer=0.0789574 | median |yA|/|yB|=0.921738 | time=177.6 s
+
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B6_resolution_study.mat
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\B6_resolution_study.csv
+C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_resolution_study.png
+
+Completed: 05-Nov-2026 09:06:33
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_B6_resolution_study_console_20261105_090017.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\run_B6_resolution_study_console_20261105_090017.txt
+octave:9>
+
+run:
+run_logged('plot_B6_resolution_study')
+
+hasil:
+Updated plot from saved MAT: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_resolution_study.png
+
+Completed: 05-Nov-2026 09:07:30
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_B6_resolution_study_console_20261105_090729.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_B6_resolution_study_console_20261105_090729.txt
+octave:10>
+
+
+run:
+run_logged('plot_AB_pair_admittance_current')
+
+hasil:
+Running plot_AB_pair_admittance_current.m
+Log file: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_AB_pair_admittance_current_console_20261105_090806.txt
+Started: 05-Nov-2026 09:08:06
+
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_Y_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_Y_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_Y_phase.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_Y_phase.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_A3_I_magnitude.png
+Saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_B6_I_magnitude.png
+Source: B6 resolution study | f=500 kHz | h_ring=0.15 mm
+With Vtx=1 V: |Itx| = |Ypair|*|Vtx|; current and admittance magnitudes differ only by units.
+CSV: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\AB_A3_B6_pairs_acquisition_order.csv
+
+Completed: 05-Nov-2026 09:08:08
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_AB_pair_admittance_current_console_20261105_090806.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_AB_pair_admittance_current_console_20261105_090806.txt
+octave:11>
+
+run:
+run_logged('plot_mesh_AB')
+
+hasil:
+ EIDORS:[Removed 365 objects with 385483152 bytes from cache]
+Mesh figure: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_mesh.png
+Data: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\fig_mesh.mat
+
+Completed: 05-Nov-2026 09:09:47
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_mesh_AB_console_20261105_090909.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\plot_mesh_AB_console_20261105_090909.txt
+
+ini ulang beberapa kali karena edit manual
+octave:12>
+
+
+#Tujuan 3
+
+run:
+run_sweepA
+
+hasil: 
+delta_mesh level 2 vs acuan level 3 = 7.1e-05
+ EIDORS:[Removed 365 objects with 53864224 bytes from cache]
+Mesh A3 built once: 5182 elements
+f =    10000 Hz | median|I_t| = 7.5539e-06 | median phase =   89.97 deg
+f =    17783 Hz | median|I_t| = 1.3433e-05 | median phase =   89.94 deg
+f =    31623 Hz | median|I_t| = 2.3887e-05 | median phase =   89.90 deg
+f =    56234 Hz | median|I_t| = 4.2478e-05 | median phase =   89.82 deg
+f =   100000 Hz | median|I_t| = 7.5532e-05 | median phase =   89.68 deg
+f =   177828 Hz | median|I_t| = 1.3429e-04 | median phase =   89.43 deg
+f =   316228 Hz | median|I_t| = 2.3860e-04 | median phase =   88.99 deg
+f =   500000 Hz | median|I_t| = 3.7662e-04 | median phase =   88.42 deg
+f =   562341 Hz | median|I_t| = 4.2323e-04 | median phase =   88.23 deg
+f =  1000000 Hz | median|I_t| = 7.4681e-04 | median phase =   86.94 deg
+f =  1778279 Hz | median|I_t| = 1.3003e-03 | median phase =   85.00 deg
+f =  3162278 Hz | median|I_t| = 2.2029e-03 | median phase =   82.94 deg
+ EIDORS:[Removed 1398 objects with 268594136 bytes from cache]
+f =  5623413 Hz | median|I_t| = 3.6384e-03 | median phase =   82.36 deg
+f = 10000000 Hz | median|I_t| = 6.0709e-03 | median phase =   83.92 deg
+Frequency sweep data saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\sweepA_results.mat
+
+run:
+run_sweepA2
+
+hasil:
+Mesh A3: 5182 elemen | baseline: f=500 kHz, d=2.0 mm, epsr_d=3, sigma_d=0, sigma=0.025, epsr=80
+
+--- d (baseline=2 mm) ---
+d          = 0.5        mm (factor 0.25) | Delta_p = 2.955      | median|y| = 1.4861e-03 | phase =  83.75 deg (diff  -4.67)
+d          = 1          mm (factor 0.50) | Delta_p = 0.9939     | median|y| = 7.5024e-04 | phase =  86.85 deg (diff  -1.57)
+d          = 2          mm (factor 1.00) | Delta_p = 0          | median|y| = 3.7662e-04 | phase =  88.42 deg (diff   0.00)
+d          = 4          mm (factor 2.00) | Delta_p = 0.4994     | median|y| = 1.8860e-04 | phase =  89.21 deg (diff   0.79)
+d          = 8          mm (factor 4.00) | Delta_p = 0.7495     | median|y| = 9.4366e-05 | phase =  89.60 deg (diff   1.19)
+
+--- epsr_d (baseline=3 ) ---
+epsr_d     = 0.75        (factor 0.25) | Delta_p = 0.7495     | median|y| = 9.4366e-05 | phase =  89.60 deg (diff   1.19)
+epsr_d     = 1.5         (factor 0.50) | Delta_p = 0.4994     | median|y| = 1.8860e-04 | phase =  89.21 deg (diff   0.79)
+epsr_d     = 3           (factor 1.00) | Delta_p = 0          | median|y| = 3.7662e-04 | phase =  88.42 deg (diff   0.00)
+epsr_d     = 6           (factor 2.00) | Delta_p = 0.9939     | median|y| = 7.5024e-04 | phase =  86.85 deg (diff  -1.57)
+epsr_d     = 12          (factor 4.00) | Delta_p = 2.955      | median|y| = 1.4861e-03 | phase =  83.75 deg (diff  -4.67)
+
+--- sigma (baseline=0.025 S/m) ---
+sigma      = 0.00625    S/m (factor 0.25) | Delta_p = 0.07235    | median|y| = 3.6297e-04 | phase =  84.55 deg (diff  -3.87)
+sigma      = 0.0125     S/m (factor 0.50) | Delta_p = 0.02596    | median|y| = 3.7341e-04 | phase =  86.94 deg (diff  -1.48)
+sigma      = 0.025      S/m (factor 1.00) | Delta_p = 0          | median|y| = 3.7662e-04 | phase =  88.42 deg (diff   0.00)
+sigma      = 0.05       S/m (factor 2.00) | Delta_p = 0.01331    | median|y| = 3.7743e-04 | phase =  89.20 deg (diff   0.78)
+sigma      = 0.1        S/m (factor 4.00) | Delta_p = 0.02       | median|y| = 3.7764e-04 | phase =  89.60 deg (diff   1.18)
+
+--- epsr (baseline=80 ) ---
+epsr       = 20          (factor 0.25) | Delta_p = 0.001778   | median|y| = 3.7731e-04 | phase =  88.40 deg (diff  -0.01)
+epsr       = 40          (factor 0.50) | Delta_p = 0.001184   | median|y| = 3.7710e-04 | phase =  88.41 deg (diff  -0.01)
+epsr       = 80          (factor 1.00) | Delta_p = 0          | median|y| = 3.7662e-04 | phase =  88.42 deg (diff   0.00)
+epsr       = 160         (factor 2.00) | Delta_p = 0.002325   | median|y| = 3.7567e-04 | phase =  88.46 deg (diff   0.04)
+epsr       = 320         (factor 4.00) | Delta_p = 0.006646   | median|y| = 3.7416e-04 | phase =  88.59 deg (diff   0.18)
+
+--- sigma_d (baseline=0 ) ---
+sigma_d    = 0           | Delta_p = 0          | median|y| = 3.7662e-04 | phase =  88.42 deg (diff   0.00)
+sigma_d    = 1e-08       | Delta_p = 0.0001195  | median|y| = 3.7662e-04 | phase =  88.41 deg (diff  -0.01)
+ EIDORS:[Removed 962 objects with 269134200 bytes from cache]
+sigma_d    = 1e-07       | Delta_p = 0.001195   | median|y| = 3.7661e-04 | phase =  88.35 deg (diff  -0.07)
+sigma_d    = 1e-06       | Delta_p = 0.01195    | median|y| = 3.7651e-04 | phase =  87.73 deg (diff  -0.68)
+sigma_d    = 1e-05       | Delta_p = 0.1191     | median|y| = 3.7796e-04 | phase =  81.61 deg (diff  -6.81)
+ EIDORS:[Removed 788 objects with 268835680 bytes from cache]
+sigma_d    = 0.0001      | Delta_p = 1.159      | median|y| = 5.6889e-04 | phase =  38.48 deg (diff -49.94)
+sigma_d    = 0.0003      | Delta_p = 3.283      | median|y| = 1.2788e-03 | phase =  14.57 deg (diff -73.85)
+
+Cek degenerasi (2d, 2*epsr_d): Delta_p = 0 (harusnya ~0)
+Selesai. Hasil di C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\sweepA2_results.mat
+octave:16>
+
+run:
+run_sweepA3
+
+hasil:
+EIDORS:[Removed 4155 objects with 896461456 bytes from cache]
+Mesh A3: 5182 elemen
+
+d = 0.5 mm, f = 100 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0634134954416892 0.0213508748978135 0.0107094354224555 0.0160667236370937]
+  sigma median |y|  : [0.000298923312793648 0.000301351550936794 0.000302116836161916 0.000302146829188446]
+  sigma phase diff  : [-3.76403392064563 -1.27090330492562 0.638549145871949 0.958212665854006]
+  epsr Delta_p      : [0.000285929097449649 0.000190594035428628 0.000380726231486471 0.00113908481821836]
+  epsr median |y|  : [0.000302057009086802 0.000302024494413905 0.000301841523873231 0.000301626250336378]
+  epsr phase diff   : [-0.000786363579848626 -0.000574750878641339 0.00175344617785811 0.00764899537189478]
+ EIDORS:[Removed 572 objects with 268742568 bytes from cache]
+
+d = 0.5 mm, f = 500 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.247059081063057 0.0985055982793437 0.0529839361283369 0.0797920854351356]
+  sigma median |y|  : [0.00124762103151376 0.00142193613025823 0.00150424816867103 0.00150923282297819]
+  sigma phase diff  : [-12.6528503982999 -5.46914470318694 3.07190588495151 4.65476390880343]
+  epsr Delta_p      : [0.00704313093904059 0.00468018437353654 0.00909536932713204 0.0257208801042566]
+  epsr median |y|  : [0.00149671000543544 0.00149310477241175 0.00147298143508967 0.00145187650177591]
+  epsr phase diff   : [-0.0950635640478765 -0.069211022018294 0.20247502967365 0.800007661349071]
+ EIDORS:[Removed 572 objects with 269210656 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 0.5 mm, f = 1000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.328791538029047 0.162066809567135 0.102631812751811 0.156356752628399]
+  sigma median |y|  : [0.00196453073909876 0.00249524206302752 0.00297215316575044 0.00300849633734208]
+  sigma phase diff  : [-10.2894626389064 -7.1837056951142 5.46914470318879 8.54105058812473]
+  epsr Delta_p      : [0.0269502807154202 0.0177501352391054 0.0321538154700145 0.0814030876424476]
+  epsr median |y|  : [0.00291628808664701 0.00289055359637926 0.00277221107884311 0.00270784284269239]
+  epsr phase diff   : [-0.689123521772771 -0.496035152640587 1.29646422093644 4.14432440714712]
+ EIDORS:[Removed 576 objects with 269141760 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 0.5 mm, f = 3000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.333908620985945 0.20922370569284 0.233441657942975 0.392564002117149]
+  sigma median |y|  : [0.00441278760836513 0.00512313153137788 0.0080201270031988 0.00874744342803008]
+  sigma phase diff  : [8.91609541771479 1.86447542941079 5.75589415143698 12.5921648787926]
+  epsr Delta_p      : [0.169318647494841 0.105787837793646 0.14511599812364 0.293403467386308]
+  epsr median |y|  : [0.0070793964725094 0.00681530016702645 0.00662479522769524 0.00718684340961814]
+  epsr phase diff   : [-8.92759086603133 -5.92986272603552 8.7820372939627 16.3264534739918]
+ EIDORS:[Removed 624 objects with 268593792 bytes from cache]
+ EIDORS:[Removed 572 objects with 269210656 bytes from cache]
+
+d = 1.0 mm, f = 100 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0319152607886498 0.0106936000718167 0.00535551476904096 0.00803392839973846]
+  sigma median |y|  : [0.000150419311490699 0.000150920761936615 0.000151070332561941 0.000151076394171366]
+  sigma phase diff  : [-1.89578641865315 -0.637015440419574 0.319471264420216 0.479327649095012]
+  epsr Delta_p      : [0.000143008288488805 9.53310964716863e-05 0.000190490013530848 0.000570154337921566]
+  epsr median |y|  : [0.000151064580365985 0.000151058418080959 0.000151014965953887 0.000150950427393312]
+  epsr phase diff   : [-0.000291669815496221 -0.00021974074127229 0.000742156535295635 0.00342535868604443]
+ EIDORS:[Removed 605 objects with 268572568 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+ EIDORS:[Removed 572 objects with 269210656 bytes from cache]
+
+d = 1.0 mm, f = 500 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.137840139013148 0.0511461316402154 0.0265891637454438 0.0399649890524425]
+  sigma median |y|  : [0.000693052769710778 0.00073649071754483 0.000754205308388835 0.000755112705392377]
+  sigma phase diff  : [-7.27150245102004 -2.89634693909194 1.55936010243046 2.35382923110555]
+  epsr Delta_p      : [0.00354813565818345 0.00236065500477259 0.00461910814113686 0.0131550641163503]
+  epsr median |y|  : [0.000753131499084677 0.000752124084335519 0.000746813512504179 0.000741144777697653]
+  epsr phase diff   : [-0.0358226581736005 -0.0269160838317504 0.0877632139925737 0.369424780651244]
+ EIDORS:[Removed 572 objects with 269210656 bytes from cache]
+
+d = 1.0 mm, f = 1000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.204577437326997 0.0906536803751666 0.0520383121676286 0.0786884292589703]
+  sigma median |y|  : [0.00121139386789569 0.00138610553942156 0.00150047611386828 0.00150841061677766]
+  sigma phase diff  : [-7.49949456426819 -4.37515551192442 2.89634693910341 4.45570704154734]
+  epsr Delta_p      : [0.0138656006650604 0.00917135005266652 0.0169337555251758 0.0432719852719207]
+  epsr median |y|  : [0.00149310477241175 0.00148607658287522 0.00145187650177591 0.00143104187531695]
+  epsr phase diff   : [-0.271686051691944 -0.20247502967365 0.597532631675421 2.03906242302347]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 1.0 mm, f = 3000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.229642678480677 0.138047910363755 0.127570185584252 0.204230728244401]
+  sigma median |y|  : [0.00297052213384459 0.00331239761384759 0.00429859523876012 0.00446600971903971]
+  sigma phase diff  : [3.95126530422604 -0.183367673773432 4.24695278698233 8.10188203457348]
+  epsr Delta_p      : [0.100588387993001 0.063433592844397 0.0860258876108578 0.167014487416334]
+  epsr median |y|  : [0.00412840487670352 0.00401006350159945 0.00384941521573124 0.00401084819557142]
+  epsr phase diff   : [-4.62973784359309 -3.20951081630152 5.19723117215696 9.72049932288439]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 2.0 mm, f = 100 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0159972175123273 0.00535020910120912 0.00267790515394782 0.00401706824200104]
+  sigma median |y|  : [7.54065625840945e-05 7.55074829769437e-05 7.55374264939793e-05 7.55387622324738e-05]
+  sigma phase diff  : [-0.950684089265025 -0.318822041506635 0.159775072795483 0.239708200079136]
+  epsr Delta_p      : [7.1510899472244e-05 4.76712836630633e-05 9.5271207976331e-05 0.000285213908289207]
+  epsr median |y|  : [7.55367072971115e-05 7.553516628097e-05 7.55259373956633e-05 7.55119998561801e-05]
+  epsr phase diff   : [-0.000120418782913134 -9.29335119508323e-05 0.000337349105706153 0.00161250999434515]
+ EIDORS:[Removed 583 objects with 269090888 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 2.0 mm, f = 500 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0723466046396188 0.0259569313495436 0.0133127786279848 0.0199952905078996]
+  sigma median |y|  : [0.000362969125443976 0.000373406756252104 0.000377429576907918 0.000377640415744284]
+  sigma phase diff  : [-3.86962869251597 -1.4830511710951 0.78446245229766 1.18230916979628]
+  epsr Delta_p      : [0.00177823201483002 0.00118384868612767 0.00232477533614895 0.00664649535226301]
+  epsr median |y|  : [0.000377308205744548 0.000377102654194414 0.000375665734962923 0.0003741587290466]
+  epsr phase diff   : [-0.0148724450616129 -0.0114542826440527 0.0402833681229424 0.176273338630594]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 2.0 mm, f = 1000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.11491326904805 0.0476314992108087 0.0261582502009448 0.0394417025216444]
+  sigma median |y|  : [0.000676960710673096 0.000725938250887982 0.0007532379025482 0.000754859153815869]
+  sigma phase diff  : [-4.51140547880193 -2.38657752141485 1.48305117110785 2.26751362338304]
+  epsr Delta_p      : [0.00699668111653344 0.00463902290193318 0.00866445410521628 0.0222902569199602]
+  epsr median |y|  : [0.000752124084335519 0.000750238056934157 0.000741144777697653 0.000735266513042983]
+  epsr phase diff   : [-0.114679297824324 -0.0877632139925737 0.28166156665867 1.00207404076497]
+ EIDORS:[Removed 620 objects with 269085065 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+ EIDORS:[Removed 571 objects with 268740008 bytes from cache]
+
+d = 2.0 mm, f = 3000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.140737494358201 0.081199688006142 0.0662937381006324 0.103878464959267]
+  sigma median |y|  : [0.00179671085240453 0.00192470760786561 0.00221230947774356 0.00225108953863109]
+  sigma phase diff  : [1.52189699334399 -0.641920340753671 2.53910297229987 4.56823118955145]
+  epsr Delta_p      : [0.0538347726536148 0.0343601897440253 0.0471198962093961 0.0895407013225916]
+  epsr median |y|  : [0.00218686085700752 0.00214929761938008 0.00208557568958428 0.00212804220254656]
+  epsr phase diff   : [-2.21239160185523 -1.59219872592583 2.8039782355646 5.29655050809038]
+ EIDORS:[Removed 1473 objects with 268481586 bytes from cache]
+ EIDORS:[Removed 636 objects with 268990491 bytes from cache]
+
+d = 4.0 mm, f = 100 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.00800689042271568 0.00267581430536909 0.00133898307737628 0.00200855542612176]
+  sigma median |y|  : [3.77376068483281e-05 3.77629686978316e-05 3.77691884595841e-05 3.77694999320128e-05]
+  sigma phase diff  : [-0.475956142166282 -0.159479953657751 0.0798961782254821 0.119863822674262]
+  epsr Delta_p      : [3.57566154294837e-05 2.38367271447954e-05 4.76414617404573e-05 0.000142639097886318]
+  epsr median |y|  : [3.77690985428414e-05 3.77687132469898e-05 3.77664053844047e-05 3.77633513439535e-05]
+  epsr phase diff   : [-5.38517573147601e-05 -4.22299181082053e-05 0.000160232848273267 0.00078116874747991]
+ EIDORS:[Removed 887 objects with 268742539 bytes from cache]
+ EIDORS:[Removed 1076 objects with 268812316 bytes from cache]
+
+d = 4.0 mm, f = 500 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0369682002922675 0.0130609015714856 0.00666015931311456 0.0100002764285558]
+  sigma median |y|  : [0.000185286194424413 0.000187832867481453 0.000188795438047376 0.0001888350472271]
+  sigma phase diff  : [-1.99107003939271 -0.749397066820109 0.393286903464386 0.59234460658864]
+  epsr Delta_p      : [0.000889837947714451 0.000592594702833373 0.00116583704366326 0.00333981254492686]
+  epsr median |y|  : [0.000188778176348094 0.000188714788453967 0.000188390143722161 0.000187983716535902]
+  epsr phase diff   : [-0.00666558893840374 -0.00521798266834139 0.0192162132389768 0.0859310551918782]
+ EIDORS:[Removed 1076 objects with 268812316 bytes from cache]
+
+d = 4.0 mm, f = 1000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0608945896145196 0.0243502541624035 0.013108266005102 0.0197411384255394]
+  sigma median |y|  : [0.000357760468829238 0.000370572388848796 0.000377195581357302 0.000377590876094775]
+  sigma phase diff  : [-2.46838226929087 -1.24167297256611 0.749397066801649 1.14268397024688]
+  epsr Delta_p      : [0.00350957178043678 0.0023298543384047 0.0043786319083997 0.0113089692411532]
+  epsr median |y|  : [0.000377102654194414 0.000376618951274103 0.0003741587290466 0.000372601059686101]
+  epsr phase diff   : [-0.0517376507669951 -0.0402833681229424 0.135989970507651 0.495400911933231]
+ EIDORS:[Removed 1237 objects with 268473059 bytes from cache]
+ EIDORS:[Removed 1292 objects with 268651819 bytes from cache]
+
+d = 4.0 mm, f = 3000 kHz  (baseline sigma=0.025, epsr=80)
+  factors: [0.25 0.5 2 4]
+  sigma Delta_p     : [0.0791357869749059 0.0442874637349272 0.0337190349505593 0.0523353207527907]
+  sigma median |y|  : [0.00100271204889285 0.00104278784479208 0.00112015040166046 0.00112975478517499]
+  sigma phase diff  : [0.565050502225034 -0.512319072184681 1.38028566756807 2.41857516813023]
+  epsr Delta_p      : [0.0276189812386391 0.0177743551299896 0.024684697915553 0.0464122513560009]
+  epsr median |y|  : [0.00111650242975993 0.00110615473887187 0.00108658152841726 0.00109738048725268]
+  epsr phase diff   : [-1.05356678608588 -0.77719433545181 1.44951617000822 2.75970256783059]
+
+Selesai. Hasil di sweepA3_results.mat
+CSV saved: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\sweepA3_table.csv
+octave:17>
+
+run:
+run_logged('summary_sweeps')
+
+hasil:
+Study        | Parameter range                                                            | Delta_p min  | Delta_p max
+------------------------------------------------------------------------------------------------------------------------
+frequency    | f = 1e+04 to 1e+07 Hz                                                      | 0            | 15.36
+layer        | d 0.5-8 mm; epsr_d 0.75-12; sigma_d 0-0.0003 S/m                           | 0            | 3.283
+medium       | sigma 0.00625-0.1 S/m; epsr 20-320; A3 sigma 0.00625-0.1 S/m; A3 epsr 20-320 | 0            | 0.3926
+CSV: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps.csv
+MAT: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps.mat
+
+Completed: 05-Nov-2026 10:49:03
+Console output saved to: C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps_console_20261105_104903.txt
+ans = C:\Users\user\Documents\GitHub\eidors-v3.12\CCEIT_forward\results\summary_sweeps_console_20261105_104903.txt
+octave:18>
+
+run:
+run_logged('plot_results')
+
+hasil:
+run_logged('plot_results')
